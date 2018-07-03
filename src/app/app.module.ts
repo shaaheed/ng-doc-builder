@@ -3,16 +3,26 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-
+import { DocumentComponent } from './document/document.component';
+import { DraggableDirective } from './draggable.directive';
+import { HeaderComponent } from './header/header.component';
+import { DroppableDirective } from './droppable.directive';
+import { ImageComponent } from './image/image.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    // DraggableDirective,
+    // DroppableDirective,
+    AppComponent,
+    DocumentComponent,
+    HeaderComponent,
+    ImageComponent,
   ],
   imports: [
     BrowserModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ImageComponent]
 })
 export class AppModule { }

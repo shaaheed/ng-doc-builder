@@ -1,0 +1,4 @@
+<div [class.dropzone-hover]="isDropzoneHovered" id="document" (drop)="dropEvent($event)" (dragover)="dragOverEvent($event)"
+    (dragleave)="dragLeaveEvent($event)" (dragenter)="dragEnterEvent($event)">
+    <ng-template #componentHost></ng-template>
+</div>
