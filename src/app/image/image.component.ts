@@ -31,6 +31,9 @@ export class ImageComponent implements OnInit {
         this.left = parseInt(this.left) + e.dx + 'px';
       }
     });
+  }
+
+  dragEvent(e) {
 
   }
 
