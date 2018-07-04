@@ -2,10 +2,10 @@
 <div class="doc-area">
     <div class="doc-left">
         <div class="settings-header">
-            <i class="material-icons back">keyboard_backspace</i>
-            <div class="title">Header</div>
+            <i *ngIf="selectedComponent" (click)="back()" class="material-icons back">keyboard_backspace</i>
+            <div class="title">{{ selectedComponent ? selectedComponent.name : 'Copmponent' }}</div>
         </div>
-        <div class="blocks">
+        <div class="blocks" *ngIf="!selectedComponent">
             <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'image')"> </div>
             <div class="block"> </div>
             <div class="block"> </div>
@@ -15,6 +15,9 @@
             <div class="block"> </div>
             <div class="block"> </div>
             <div class="block"> </div>
+        </div>
+        <div *ngIf="selectedComponent" class="config" [ngSwitch]="selectedComponent.name">
+            <app-image-config *ngSwitchCase="'image'"></app-image-config>
         </div>
     </div>
     <div class="doc-right">
