@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "githubbuild": "ng build --prod --base-href https://shaaheed.github.io/ng-doc-builder/"
+    "publish": "ng build --prod --base-href https://shaaheed.github.io/ng-doc-builder/ && ngh"
   },
   "private": true,
   "dependencies": {
