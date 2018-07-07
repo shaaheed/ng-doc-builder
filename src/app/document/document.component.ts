@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewContainerRef, ComponentFactoryResolver, ViewChild } from '@angular/core';
 import { ImageComponent } from '../image/image.component';
+import { component } from '../common/component-constant';
+import { TextComponent } from '../text/text.component';
 
 
 @Component({
@@ -23,22 +25,32 @@ export class DocumentComponent implements OnInit {
     e.preventDefault();
 
     const from = e.dataTransfer.getData('from');
+    const componentType = e.dataTransfer.getData('component');
     this.isDropzoneHovered = false;
 
     if (from == 'block') {
-      // console.log('on drop', e, e.dataTransfer.getData('block'))
-      const factory = this.componentFactoryResolver.resolveComponentFactory(ImageComponent);
-      const component = factory.create(this.viewContainerRef.parentInjector);
-      this.viewContainerRef.insert(component.hostView);
-      component.instance.top = e.offsetY + 'px';
-      component.instance.left = e.offsetX + 'px';
+      switch (componentType) {
+        case component.image.name:
+          this.crateComponent(ImageComponent, e.offsetX, e.offsetY);
+          break;
+        case component.text.name:
+          this.crateComponent(TextComponent, e.offsetX, e.offsetY);
+          break;
+      }
     }
 
   }
 
+  crateComponent(componentRef, left, top) {
+    const factory = this.componentFactoryResolver.resolveComponentFactory(componentRef);
+    const c = factory.create(this.viewContainerRef.parentInjector);
+    this.viewContainerRef.insert(c.hostView);
+    c.instance['top'] = top;
+    c.instance['left'] = left;
+  }
+
   dragOverEvent(e) {
     e.preventDefault();
-    // console.log('drag over');
   }
 
   dragLeaveEvent(e) {

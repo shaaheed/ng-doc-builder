@@ -1,20 +1,21 @@
 <app-header></app-header>
 <div class="doc-area">
     <div class="doc-left">
-        <div class="settings-header">
-            <i *ngIf="selectedComponent" (click)="back()" class="material-icons back">keyboard_backspace</i>
-            <div class="title">{{ selectedComponent ? selectedComponent.name : 'Copmponent' }}</div>
+        <div class="config-header">
+            <mat-icon *ngIf="selectedComponent" (click)="back()" class="cursor-pointer back ">keyboard_backspace</mat-icon>
+            <div class="title">
+                <h4>{{ selectedComponent ? selectedComponent.title : 'Components' }}</h4>
+            </div>
         </div>
-        <div class="blocks" *ngIf="!selectedComponent">
-            <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'image')"> </div>
-            <div class="block"> </div>
-            <div class="block"> </div>
-            <div class="block"> </div>
-            <div class="block"> </div>
-            <div class="block"> </div>
-            <div class="block"> </div>
-            <div class="block"> </div>
-            <div class="block"> </div>
+        <div class="block-container" *ngIf="!selectedComponent">
+            <div class="block-row">
+                <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'image')">
+                    <mat-icon>insert_photo</mat-icon>
+                </div>
+                <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'text')">
+                    <mat-icon>text_fields</mat-icon>
+                </div>
+            </div>
         </div>
         <div *ngIf="selectedComponent" class="config" [ngSwitch]="selectedComponent.name">
             <app-image-config *ngSwitchCase="'image'"></app-image-config>

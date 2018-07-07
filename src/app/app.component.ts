@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ImageService } from './services/image.service';
 import { BaseComponent } from './base.component';
+import { CommonService } from './services/common.service';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +10,16 @@ import { BaseComponent } from './base.component';
 })
 export class AppComponent extends BaseComponent {
 
-  selectedComponent: { id: string, name: string };
+  selectedComponent: any;
 
-  constructor(private imageService: ImageService) {
+  constructor(
+    private imageService: ImageService,
+    private common: CommonService) {
     super();
   }
 
   ngOnInit() {
-    this.subscribe(this.imageService.componentClicked, this.onComponentClicked.bind(this));
+    this.subscribe(this.common.openSettings, this.openSettings.bind(this));
   }
 
   dragStartEvent(e: DragEvent, block) {
@@ -24,10 +27,8 @@ export class AppComponent extends BaseComponent {
     e.dataTransfer.setData('from', 'block');
   }
 
-  onComponentClicked(v: { id: string, name: string }) {
-    //if (v.name !== this.selectedComponent.name) {
-    this.selectedComponent = v;
-    //}
+  openSettings() {
+    this.selectedComponent = this.common.getModel();
   }
 
   back() {

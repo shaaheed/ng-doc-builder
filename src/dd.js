@@ -41,13 +41,16 @@ function removeClass(el, klass) {
     }
 }
 
-function draggable(el, o) {
-    el.setAttribute('draggable', true);
-    var events = ['drag', 'dragend', 'dragenter', 'dragexit', 'dragleave', 'dragover', 'dragstart', 'drop'];
-    events.forEach(en => { on(el, en, function (e) { if (o[en]) o[en](e) }); });
+function getFileAsDataURL(e, callback) {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+        if(callback){
+            callback({filename: file.name, dataURL: reader.result})
+        }
+    }, false);
+    if (file) {
+        reader.readAsDataURL(file);
+    }
 }
 
-function droppable(el, o) {
-    var events = ['drag', 'dragend', 'dragenter', 'dragexit', 'dragleave', 'dragover', 'dragstart', 'drop'];
-    events.forEach(en => { on(el, en, function (e) { if (o[en]) o[en](e) }); });
-}

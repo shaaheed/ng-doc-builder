@@ -7,6 +7,12 @@ body, html {
     background: #e5e5e5;
     overflow: hidden;
     height: 100%;
+    font-family: sans-serif;
+    color: #6c6c6c;
+}
+
+h4, h5 {
+    margin: 0;
 }
 
 .header {
@@ -23,17 +29,16 @@ body, html {
     width: 315px;
     background: white;
     position: absolute;
-    left: 0;
     height: 100%;
-    bottom: 0;
     top: 52px;
+    padding: 0 30px 30px;
 }
 
 .doc-pane {
     overflow-y: scroll;
     overflow-x: hidden;
     position: absolute;
-    width: calc(100% - 315px);
+    width: calc(100% - 375px);
     top: 52px;
     bottom: 0;
     padding-top: 20px;
@@ -49,68 +54,167 @@ body, html {
     margin: 0 auto;
     padding: 50px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 3px;
+    overflow: hidden;
 }
 
-.settings-header {
-    height: 22px;
-    padding: 15px;
+.config-header {
+    display: flex;
+    padding: 25px 0;
+    align-items: center;
     box-shadow: inset 0 -1px 0 #e5e5e5;
-    font-family: sans-serif;
 }
 
-.settings-header .back {
+.config-header .back {
     position: absolute;
 }
 
-.settings-header .title {
+.config-header .title {
     text-align: center;
-    margin-left: 30px;
-    margin-right: 30px;
-    font-size: 15px;
-    font-weight: normal;
+    flex: 1;
+    text-transform: capitalize;
 }
 
-.blocks {
-    padding: 15px;
+.block-container .block-row {
+    display: flex;
 }
 
-.blocks .block {
-    display: inline-block;
-    margin: 0 0 6px 6px;
-    width: 82px;
-    height: 64px;
+.block-container .block {
+    margin: 15px;
+    height: 70px;
     border: 1px solid #e5e5e5;
     background: #f4f4f4;
     color: #000;
     cursor: move;
+    display: flex;
+    padding: 15px;
+    flex: 1;
 }
 
-.blocks .block:hover {
+.block-container .block .mat-icon {
+    flex: 1;
+    height: 100%;
+    font-size: 45px;
+    text-align: center;
+    color: #a0a0a0;
+    line-height: 70px;
+}
+
+.block-container .block:hover {
     background: white;
 }
 
-/* jquery ui css */
-.ui-draggable-handle {
-    background: #f4f4f4 !important;
-    z-index: 99999;
+.picker {
+    display: flex;
+    padding: 20px 0;
+    box-shadow: inset 0 -1px 0 #e5e5e5;
 }
 
-.ui-droppable-hover:hover .ui-draggable-dragging::before {
-    border: .5px solid #aed4ae;
-    position: fixed;
-    content: "";
-    top: 0;
-    bottom: 0;
+.picker h5 {
+    line-height: 25px;
+    flex: 1;
 }
 
-.dropzone-hover {
+.picker .control {
+    flex: 2;
+    text-align: right;
+    position: relative;
+}
+
+.picker .file-picker {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.picker .input-picker input {
+    width: 55px;
+    height: 23px;
+    border-radius: 3px;
+    border: 1px solid #b7b7b7;
+    padding: 0 25px 0 5px;
+}
+
+.picker .input-picker span, .border-width-picker span {
+    position: absolute;
+    font-size: 14px;
+    right: 0px;
+    line-height: 21px;
+    height: calc(100% - 2px);
+    padding: 0px 5px;
+    background: #ddd;
+    margin: 1px 1px 1px 0;
+    border-radius: 0 2px 2px 0;
+}
+
+.picker .border-picker {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.picker .border-style-picker {
+    border: 1px solid #b7b7b7;
+    display: flex;
+    height: 23px;
+    align-items: center;
+    text-align: left;
+    padding-left: 5px;
+    font-size: 12px;
+    border-radius: 3px;
+}
+
+.picker .border-width-picker {
+    text-align: left;
+}
+
+.picker .border-width-picker span {
+    right: 5px;
+}
+
+.border-picker .border-picker-item {
+    position: relative;
+    flex-basis: 30%;
+}
+
+.picker .border-color-picker {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.picker .border-color-picker span.color {
+    flex-basis: 21px;
+    height: 21px;
+    border-radius: 50%;
+    border: 2px solid #b7b7b7;
+}
+
+.picker .border-color-picker span.color-name {
+    font-size: 14px;
+}
+
+.border-width-picker input {
+    width: calc(100% - 42px);
+    height: 23px;
+    border-radius: 3px;
+    border: 1px solid #b7b7b7;
+    padding: 0 30px 0px 5px;
+}
+
+.picker .file-picker .file-name {
+    font-size: 12px;
+    color: #6c6c6c;
+    padding-right: 15px;
+}
+
+.block-active, .dropzone-hover {
     border: 1px solid #aed4ae;
     border-radius: 3px;
 }
 
-/* .image {
-    position: absolute;
-} */
+.block-active {
+    box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 2px 0px;
+}
 
 .loader {
     display: inline-block;
@@ -123,4 +227,24 @@ body, html {
     border-top-color: #8e8e8e;
     -webkit-border-radius: 9999px;
     border-radius: 100%;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.color-pink {
+    color: #ff4081;
+}
+
+.flex {
+    display: flex;
+}
+
+.padding-top-0 {
+    padding-top: 0;
+}
+
+.box-shadow-none {
+    box-shadow: none;
 }
