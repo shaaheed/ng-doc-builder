@@ -1,3 +1,10 @@
 export const component = {
-    image: 'image'
+    image: {
+        name: 'image',
+        title: 'Image'
+    },
+    text: {
+        name: 'text',
+        title: 'Text'
+    }
 }

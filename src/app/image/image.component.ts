@@ -1,11 +1,11 @@
-import { Component, OnInit, ComponentFactoryResolver, ViewContainerRef, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver, ViewContainerRef, ElementRef, ViewChild, Renderer2 } from '@angular/core';
 import * as interact from 'interactjs'
-import { CommonService } from '../common.service';
 import { ISubscription } from 'rxjs/Subscription';
 import { BaseComponent } from '../base.component';
 import { ImageService } from '../services/image.service';
 import { property } from '../common/property-constant';
 import { component } from '../common/component-constant';
+import { CommonService } from '../services/common.service';
 
 @Component({
   selector: 'app-image',
@@ -13,21 +13,44 @@ import { component } from '../common/component-constant';
 })
 export class ImageComponent extends BaseComponent implements OnInit {
 
-  top: string = "10px";
-  left: string = "10px";
-  width: string = "100px";
-  height: string = "100px";
-  border: string = "1px solid red";
-  src: string = '';
+  top: number;
+  left: number;
+  width: number = 100;
+  height: number = 100;
+  border: boolean;
+  borderWidth: number = 1;
+  borderStyle: string = 'solid';
+  borderColor: string = '#000000';
+  filename: string;
   id: string;
+  name: string = component.image.name;
+  title: string = component.image.title;
+  aspectRatio: boolean;
+
+  private _src: string;
+  private widthRate: number;
+  private heightRate: number;
 
   private el: HTMLElement;
+  private imgEl: any;
   private base64ImagePrefix = 'data:image/png;base64,';
   private wasDrag = false;
 
+  set src(newSrc: string) {
+    this._src = newSrc;
+  }
+  get src(): string {
+    if (this._src) {
+      return this._src;
+    }
+    return '../../assets/img-placeholder.png';
+  };
+
   constructor(
     private elRef: ElementRef,
-    private service: ImageService) {
+    private service: ImageService,
+    private renderer2: Renderer2,
+    private common: CommonService) {
 
     super();
     this.el = elRef.nativeElement;
@@ -35,47 +58,56 @@ export class ImageComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.subscribe(this.service.valueChanged, value => {
-      if (this.id === value.component) {
-        switch (value.property) {
-          case property.src:
-            this.src = value.newValue;
-            break;
-        }
-      }
-    });
-
+    this.imgEl = this.elRef.nativeElement.querySelector('img');
     interact(this.el.firstChild).draggable({
       onstart: (e) => {
         this.wasDrag = true;
       },
       onmove: (e) => {
         this.wasDrag = true;
-        this.top = parseInt(this.top) + e.dy + 'px';
-        this.left = parseInt(this.left) + e.dx + 'px';
+        this.top = this.top + e.dy;
+        this.left = this.left + e.dx;
       }
     }).resizable({
       edges: { left: true, right: true, bottom: true, top: true },
     }).on('resizemove', (e) => {
-      this.width = (<any>e).rect.width + 'px';
-      this.height = (<any>e).rect.height + 'px';
-      this.top = parseInt(this.top) + (<any>e).deltaRect.top + 'px';
-      this.left = parseInt(this.left) + (<any>e).deltaRect.left + 'px';
+      const _e = <any>e;
+      const newWidth = _e.rect.width;
+      const newHeight = _e.rect.height;
+      if (this.aspectRatio) {
+        if (_e.edges.right || _e.edges.left) {
+          this.width = newWidth;
+          this.height = (newWidth * this.heightRate) | 0;
+        }
+        if (_e.edges.top || _e.edges.bottom) {
+          this.height = newHeight;
+          this.width = (newHeight * this.widthRate) | 0;
+        }
+      } else {
+        this.width = newWidth;
+        this.height = newHeight;
+      }
+      this.top = this.top + _e.deltaRect.top;
+      this.left = this.left + _e.deltaRect.left;
     });
   }
 
-  dragEvent(e) {
-
-  }
-
   clickEvent(e) {
+    // ignore drag ending click event
     if (this.wasDrag) {
       this.wasDrag = false;
     } else {
-      console.log('click')
-      this.service.onComponentClick({ id: this.id, name: component.image });
+      this.common.setModel(this);
+      this.common.openSettings.next();
     }
+  }
+
+  loadEvent(e) {
+    // getting width, height rate for maintaining aspect ratio of the image
+    const naturalWidth = this.imgEl.naturalWidth;
+    const naturalHeight = this.imgEl.naturalHeight;
+    this.widthRate = naturalWidth / naturalHeight;
+    this.heightRate = naturalHeight / naturalWidth;
   }
 
   ngOnDestroy() {

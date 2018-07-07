@@ -4,5 +4,6 @@ export const property = {
     top: 'top',
     left: 'left',
     border: 'border',
-    src: 'src'
+    src: 'src',
+    aspectRatio: 'aspectRatio'
 }
