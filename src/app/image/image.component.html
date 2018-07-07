@@ -1,3 +1,3 @@
-<div class="image" (click)="clickEvent($event)" (drag)="dragEvent($event)" [ngStyle]="{top: top + 'px', left: left + 'px', width: width + 'px', height: height + 'px', borderWidth: border ? borderWidth + 'px' : '', borderStyle:  border ? borderStyle : '', borderColor: border ? borderColor : '', position: 'absolute'}">
+<div class="image" (click)="clickEvent($event)" [ngStyle]="{top: top + 'px', left: left + 'px', width: width + 'px', height: height + 'px', borderWidth: border ? borderWidth + 'px' : '', borderStyle:  border ? borderStyle : '', borderColor: border ? borderColor : '', position: 'absolute'}">
     <img (load)="loadEvent($event)" [ngStyle]="{width: width + 'px', height: height + 'px'}" src="{{src}}">
 </div>
