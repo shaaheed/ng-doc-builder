@@ -6,6 +6,7 @@ import { ImageService } from '../services/image.service';
 import { property } from '../common/property-constant';
 import { component } from '../common/component-constant';
 import { CommonService } from '../services/common.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-image',
@@ -43,7 +44,7 @@ export class ImageComponent extends BaseComponent implements OnInit {
     if (this._src) {
       return this._src;
     }
-    return '../../assets/img-placeholder.png';
+    return `${environment.basepath}assets/img-placeholder.png`;
   };
 
   constructor(
