@@ -24,7 +24,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
         </mat-select>
       </div>
       <div class="border-picker-item border-color-picker">
-        <span class="color-name">{{borderColor}}</span>
+        <span *ngIf="!isColotEditable" (click)="makeColorEditable(true)" class="color-name">{{borderColor}}</span>
+        <input *ngIf="isColotEditable" (focusout)="makeColorEditable(false)" class="color-name" [value]="borderColor">
         <span (click)="colorInput.click()" class="color cursor-pointer" [style.background]="borderColor"></span>
         <input [value]="borderColor" (input)="colorInputChangeEvent($event)" #colorInput hidden type="color" />
       </div>
@@ -43,6 +44,8 @@ export class BorderPickerComponent implements OnInit {
   @Output() borderStyleChange: EventEmitter<string> = new EventEmitter();
   @Input() borderColor: string = '#000000';
   @Output() borderColorChange: EventEmitter<string> = new EventEmitter();
+
+  private isColotEditable: boolean = false;
 
   options = [
     {
@@ -83,6 +86,10 @@ export class BorderPickerComponent implements OnInit {
   colorInputChangeEvent(e) {
     this.borderColor = e.target.value;
     this.borderColorChange.emit(e.target.value)
+  }
+
+  makeColorEditable(isEditable) {
+    this.isColotEditable = isEditable;
   }
 
 }

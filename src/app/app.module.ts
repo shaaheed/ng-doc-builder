@@ -22,6 +22,9 @@ import { InputPickerComponent } from './shared-components/input-picker.component
 import { FilePickerComponent } from './shared-components/file-picker.component';
 import { TogglePickerComponent } from './shared-components/toggle-picker.component';
 import { BorderPickerComponent } from './shared-components/border-picker.component';
+import { TextConfigComponent } from './text-config/text-config.component';
+import { OptionPickerComponent } from './shared-components/option-picker.component';
+import { ColorPickerComponent } from './shared-components/color-picker.component';
 
 
 @NgModule({
@@ -35,7 +38,10 @@ import { BorderPickerComponent } from './shared-components/border-picker.compone
     InputPickerComponent,
     FilePickerComponent,
     TogglePickerComponent,
-    BorderPickerComponent
+    BorderPickerComponent,
+    TextConfigComponent,
+    OptionPickerComponent,
+    ColorPickerComponent
   ],
   imports: [
     BrowserModule,

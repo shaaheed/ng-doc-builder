@@ -1,3 +1,7 @@
-<div class="text" style="padding: 3px" [ngStyle]="{top: top + 'px', left: left + 'px', width: width + 'px', height: height + 'px', position: 'absolute'}">
-  <textarea style="cursor: move" [ngStyle]="{width: (width - 5) + 'px', height: (height - 5) + 'px'}"></textarea>
+<div class="text" [ngStyle]="{top: top + 'px', left: left + 'px', width: width + 'px', height: height + 'px', position: 'absolute'}">
+  <!-- <div class="action-button delete">
+    <mat-icon>delete</mat-icon>
+  </div> -->
+  <div (click)="openSettings($event)" class="text-mover-area"></div>
+  <textarea (click)="openSettings($event)" [ngStyle]="{width: (width - 5) + 'px', height: (height -5) + 'px', fontSize: fontSize + 'px', color: color, fontFamily: fontFamily}"></textarea>
 </div>

@@ -26,12 +26,12 @@ h4, h5 {
 }
 
 .doc-left {
-    width: 315px;
+    width: 345px;
     background: white;
     position: absolute;
     height: 100%;
     top: 52px;
-    padding: 0 30px 30px;
+    padding: 0 0 30px 30px;
 }
 
 .doc-pane {
@@ -55,6 +55,12 @@ h4, h5 {
     padding: 50px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 3px;
     overflow: hidden;
+}
+
+.config {
+    overflow-y: auto;
+    height: 100%;
+    padding-right: 30px;
 }
 
 .config-header {
@@ -134,7 +140,8 @@ h4, h5 {
     padding: 0 25px 0 5px;
 }
 
-.picker .input-picker span, .border-width-picker span {
+.picker .input-picker span,
+.border-width-picker span {
     position: absolute;
     font-size: 14px;
     right: 0px;
@@ -152,7 +159,8 @@ h4, h5 {
     justify-content: space-around;
 }
 
-.picker .border-style-picker {
+.picker .border-style-picker,
+.picker .option-picker {
     border: 1px solid #b7b7b7;
     display: flex;
     height: 23px;
@@ -161,6 +169,10 @@ h4, h5 {
     padding-left: 5px;
     font-size: 12px;
     border-radius: 3px;
+}
+
+.picker .option-picker {
+    flex: 0.5;
 }
 
 .picker .border-width-picker {
@@ -176,21 +188,42 @@ h4, h5 {
     flex-basis: 30%;
 }
 
-.picker .border-color-picker {
+.picker .border-color-picker,
+.picker .color-picker {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.picker .border-color-picker span.color {
+.picker .color-picker {
+    justify-content: flex-end;
+}
+
+.picker .border-color-picker span.color,
+.picker .color-picker span.color {
     flex-basis: 21px;
     height: 21px;
     border-radius: 50%;
     border: 2px solid #b7b7b7;
 }
 
-.picker .border-color-picker span.color-name {
+.picker .border-color-picker .color-name,
+.picker .color-picker .color-name {
     font-size: 14px;
+    border: 1px solid white;
+    height: 23px;
+    line-height: 23px;
+    padding: 0 5px;
+    border-radius: 3px;
+}
+
+.picker .border-color-picker .color-name:hover, 
+.picker .border-color-picker input.color-name {
+    border: 1px solid #b7b7b7;
+}
+
+.picker .border-color-picker input.color-name {
+    width: 55px;
 }
 
 .border-width-picker input {
@@ -205,6 +238,29 @@ h4, h5 {
     font-size: 12px;
     color: #6c6c6c;
     padding-right: 15px;
+}
+
+app-text .text-mover-area {
+    position: absolute;
+    height: 8px;
+    width: calc(100% - 10px);
+}
+
+app-text .text:hover .text-mover-area {
+    background: #9c9c9c3d;
+    box-shadow: rgba(86, 86, 86, 0.15) 0px 2px 3px;
+}
+
+.action-button {
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    right: 0;
+    top: -25px;
+}
+
+app-text .text {
+    padding: 0 5px 5px;
 }
 
 .block-active, .dropzone-hover {

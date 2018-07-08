@@ -13,17 +13,18 @@
                     <mat-icon>insert_photo</mat-icon>
                 </div>
                 <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'text')">
-                    <mat-icon>text_fields</mat-icon>
+                    <mat-icon>text_format</mat-icon>
                 </div>
             </div>
         </div>
         <div *ngIf="selectedComponent" class="config" [ngSwitch]="selectedComponent.name">
             <app-image-config *ngSwitchCase="'image'"></app-image-config>
+            <app-text-config *ngSwitchCase="'text'"></app-text-config>
         </div>
     </div>
-    <div class="doc-right">
-        <div class="doc-pane">
-            <app-document></app-document>
-        </div>
+    <!-- <div class="doc-right"> -->
+    <div class="doc-pane">
+        <app-document></app-document>
     </div>
+    <!-- </div> -->
 </div>
