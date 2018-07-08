@@ -92,7 +92,7 @@ export class ImageComponent extends BaseComponent implements OnInit {
     });
   }
 
-  clickEvent(e) {
+  openSettings(e) {
     // ignore drag ending click event
     if (this.wasDrag) {
       this.wasDrag = false;
