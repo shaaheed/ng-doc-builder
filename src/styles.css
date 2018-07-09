@@ -59,13 +59,14 @@ h4, h5 {
 
 .config {
     overflow-y: auto;
-    height: 100%;
+    height: calc(100vh - 120px);
     padding-right: 30px;
 }
 
 .config-header {
     display: flex;
     padding: 25px 0;
+    margin-right: 30px;
     align-items: center;
     box-shadow: inset 0 -1px 0 #e5e5e5;
 }
@@ -80,20 +81,22 @@ h4, h5 {
     text-transform: capitalize;
 }
 
-.block-container .block-row {
+.block-container {
+    padding: 25px 30px 0 0;
+    justify-content: space-between;
     display: flex;
 }
 
+
 .block-container .block {
-    margin: 15px;
-    height: 70px;
     border: 1px solid #e5e5e5;
     background: #f4f4f4;
     color: #000;
     cursor: move;
     display: flex;
-    padding: 15px;
-    flex: 1;
+    padding: 20px 0;
+    -webkit-box-flex: 1;
+    flex-basis: 45%;
 }
 
 .block-container .block .mat-icon {
@@ -246,10 +249,10 @@ app-text .text-mover-area {
     width: calc(100% - 10px);
 }
 
-app-text .text:hover .text-mover-area {
+/* app-text .text:hover .text-mover-area {
     background: #9c9c9c3d;
     box-shadow: rgba(86, 86, 86, 0.15) 0px 2px 3px;
-}
+} */
 
 .action-button {
     position: absolute;
@@ -263,6 +266,28 @@ app-text .text {
     padding: 0 5px 5px;
 }
 
+.text textarea {
+    resize: none;
+}
+
+.picker.text-controls {
+    padding: 10px 0;
+}
+
+.text-controls mat-icon {
+    text-align: center;
+    flex: 1;
+    padding: 10px 0;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 0 1px;
+}
+
+.text-controls .mat-icon:hover,
+.text-controls .mat-icon.active {
+    background: #dddddd;
+}
+
 .block-active, .dropzone-hover {
     border: 1px solid #aed4ae;
     border-radius: 3px;
@@ -272,17 +297,33 @@ app-text .text {
     box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 2px 0px;
 }
 
-.loader {
-    display: inline-block;
-    width: 47px;
-    height: 47px;
-    margin: -35px 0 0 -22px;
-    border: 7px solid rgba(0,0,0,.1);
-    -webkit-animation: rotation .5s infinite linear;
-    animation: rotation .5s infinite linear;
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.img-loader-container {
+    width: 25px;
+    height: 25px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-15px, -15px);
+    position: absolute;
+}
+
+.img-loader {
+    border: 3px solid rgba(0,0,0,.1);
+    -webkit-animation: spin .5s infinite linear;
+    animation: spin .5s infinite linear;
     border-top-color: #8e8e8e;
-    -webkit-border-radius: 9999px;
     border-radius: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .cursor-pointer {
