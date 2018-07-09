@@ -1,8 +1,9 @@
-import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { component } from '../common/component-constant';
 import { CommonService } from '../services/common.service';
 import * as interact from 'interactjs'
 import { BaseComponent } from '../base.component';
+import { MatAutocompleteTrigger } from '@angular/material';
 
 @Component({
   selector: 'app-text',
@@ -21,10 +22,20 @@ export class TextComponent extends BaseComponent implements OnInit {
   fontSize: number = 14;
   fontFamily: string = 'sans-serif';
 
-  align: string;
-  bold: boolean;
-  italic: boolean;
-  underline: boolean;
+  align: string = 'left';
+  bold: boolean = false;
+  italic: boolean = false;
+  underline: boolean = false;
+
+  macros: any[] = [
+    { name: 'One', value: 'one' },
+    { name: 'Two', value: 'two' },
+    { name: 'Three', value: 'three' },
+    { name: 'Four', value: 'four' },
+  ];
+
+
+  // @ViewChild('autoCompleteTrigger', { read: MatAutocompleteTrigger }) autoCompleteTrigger: MatAutocompleteTrigger;
 
   private el: HTMLElement;
   private wasDrag = false;
