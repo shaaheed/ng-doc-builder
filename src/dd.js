@@ -41,13 +41,17 @@ function removeClass(el, klass) {
     }
 }
 
-function getFileAsDataURL(e, callback) {
+function getFileAsDataURL(e, callback, load = null) {
     const file = e.target.files[0];
     const reader = new FileReader();
-    reader.addEventListener("load", () => {
-        if(callback){
-            callback({filename: file.name, dataURL: reader.result})
+    reader.addEventListener("loadstart", (e) => {
+        if (load) { load(true); }
+    });
+    reader.addEventListener("loadend", (e) => {
+        if (callback) {
+            callback({ filename: file.name, dataURL: reader.result })
         }
+        if (load) { load(false); }
     }, false);
     if (file) {
         reader.readAsDataURL(file);
