@@ -10,6 +10,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
       <span>px</span>
     </div>
   </div>
+  <!--<mat-slider></mat-slider>-->
   `
 })
 export class InputPickerComponent implements OnInit {

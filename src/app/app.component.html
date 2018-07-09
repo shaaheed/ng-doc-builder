@@ -8,13 +8,11 @@
             </div>
         </div>
         <div class="block-container" *ngIf="!selectedComponent">
-            <div class="block-row">
-                <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'image')">
-                    <mat-icon>insert_photo</mat-icon>
-                </div>
-                <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'text')">
-                    <mat-icon>text_format</mat-icon>
-                </div>
+            <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'image')">
+                <mat-icon>insert_photo</mat-icon>
+            </div>
+            <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'text')">
+                <mat-icon>text_format</mat-icon>
             </div>
         </div>
         <div *ngIf="selectedComponent" class="config" [ngSwitch]="selectedComponent.name">
@@ -22,9 +20,7 @@
             <app-text-config *ngSwitchCase="'text'"></app-text-config>
         </div>
     </div>
-    <!-- <div class="doc-right"> -->
     <div class="doc-pane">
         <app-document></app-document>
     </div>
-    <!-- </div> -->
 </div>

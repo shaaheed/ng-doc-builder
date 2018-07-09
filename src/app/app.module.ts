@@ -14,7 +14,9 @@ import {
   MatIconModule,
   MatSlideToggleModule,
   MatCommonModule,
-  MatSelectModule
+  MatSelectModule,
+  MatAutocompleteModule,
+  MatSliderModule
 } from '@angular/material';
 import { TextComponent } from './text/text.component';
 import { CommonService } from './services/common.service';
@@ -25,6 +27,7 @@ import { BorderPickerComponent } from './shared-components/border-picker.compone
 import { TextConfigComponent } from './text-config/text-config.component';
 import { OptionPickerComponent } from './shared-components/option-picker.component';
 import { ColorPickerComponent } from './shared-components/color-picker.component';
+import { TextControlsComponent } from './shared-components/text-controls.component';
 
 
 @NgModule({
@@ -41,7 +44,8 @@ import { ColorPickerComponent } from './shared-components/color-picker.component
     BorderPickerComponent,
     TextConfigComponent,
     OptionPickerComponent,
-    ColorPickerComponent
+    ColorPickerComponent,
+    TextControlsComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,9 @@ import { ColorPickerComponent } from './shared-components/color-picker.component
     MatIconModule,
     MatSlideToggleModule,
     MatSelectModule,
-    BrowserAnimationsModule
+    MatAutocompleteModule,
+    BrowserAnimationsModule,
+    MatSliderModule
   ],
   providers: [CommonService, ImageService],
   bootstrap: [AppComponent],

@@ -27,6 +27,7 @@ export class ImageComponent extends BaseComponent implements OnInit {
   name: string = component.image.name;
   title: string = component.image.title;
   aspectRatio: boolean;
+  loader: boolean = false;
 
   private _src: string;
   private widthRate: number;
@@ -109,6 +110,11 @@ export class ImageComponent extends BaseComponent implements OnInit {
     const naturalHeight = this.imgEl.naturalHeight;
     this.widthRate = naturalWidth / naturalHeight;
     this.heightRate = naturalHeight / naturalWidth;
+  }
+
+  showLoader(value){
+    console.log('value', value);
+    this.loader = value;
   }
 
   ngOnDestroy() {
