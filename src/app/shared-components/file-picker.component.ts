@@ -20,6 +20,7 @@ export class FilePickerComponent implements OnInit {
   @Output() filenameChange: EventEmitter<any> = new EventEmitter();
   @Input() dataURL: any;
   @Output() dataURLChange: EventEmitter<any> = new EventEmitter();
+  @Output() load: EventEmitter<boolean> = new EventEmitter();
 
   constructor() { }
 
@@ -30,7 +31,7 @@ export class FilePickerComponent implements OnInit {
     getFileAsDataURL(e, (data) => {
       this.filenameChange.emit(data.filename);
       this.dataURLChange.emit(data.dataURL);
-    })
+    }, (load) => { this.load.emit(load); })
   }
 
 
