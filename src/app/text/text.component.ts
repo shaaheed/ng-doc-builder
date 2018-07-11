@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, Renderer2, ViewChild } from '@angular/core';
-import { component } from '../common/component-constant';
+import { constant } from '../common/component-constant';
 import { CommonService } from '../services/common.service';
 import * as interact from 'interactjs'
 import { BaseComponent } from '../base.component';
@@ -12,8 +12,8 @@ import { MatAutocompleteTrigger } from '@angular/material';
 export class TextComponent extends BaseComponent implements OnInit {
 
   id: string;
-  name: string = component.text.name;
-  title: string = component.text.title;
+  name: string = constant.text.name;
+  title: string = constant.text.title;
   top: string;
   left: string;
   width: number = 150;
@@ -53,7 +53,7 @@ export class TextComponent extends BaseComponent implements OnInit {
 
   ngOnInit() {
 
-    const moverArea = this.el.querySelector('.text-mover-area');
+    const moverArea = this.el.querySelector('.mover-area');
     interact(moverArea).draggable({
       onstart: (e) => {
         this.wasDrag = true;

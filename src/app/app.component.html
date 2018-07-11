@@ -15,9 +15,18 @@
                 <mat-icon>text_format</mat-icon>
             </div>
         </div>
+        <div class="block-container" *ngIf="!selectedComponent">
+            <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'line')">
+                <mat-icon>remove</mat-icon>
+            </div>
+            <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'table')">
+                <mat-icon>grid_on</mat-icon>
+            </div>
+        </div>
         <div *ngIf="selectedComponent" class="config" [ngSwitch]="selectedComponent.name">
             <app-image-config *ngSwitchCase="'image'"></app-image-config>
             <app-text-config *ngSwitchCase="'text'"></app-text-config>
+            <app-line-config *ngSwitchCase="'line'"></app-line-config>
         </div>
     </div>
     <div class="doc-pane">

@@ -28,6 +28,9 @@ import { TextConfigComponent } from './text-config/text-config.component';
 import { OptionPickerComponent } from './shared-components/option-picker.component';
 import { ColorPickerComponent } from './shared-components/color-picker.component';
 import { TextControlsComponent } from './shared-components/text-controls.component';
+import { LineComponent } from './line/line.component';
+import { LineConfigComponent } from './line-config/line-config.component';
+import { TableComponent } from './table/table.component';
 
 
 @NgModule({
@@ -45,7 +48,10 @@ import { TextControlsComponent } from './shared-components/text-controls.compone
     TextConfigComponent,
     OptionPickerComponent,
     ColorPickerComponent,
-    TextControlsComponent
+    TextControlsComponent,
+    LineComponent,
+    LineConfigComponent,
+    TableComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +67,11 @@ import { TextControlsComponent } from './shared-components/text-controls.compone
   ],
   providers: [CommonService, ImageService],
   bootstrap: [AppComponent],
-  entryComponents: [ImageComponent, TextComponent]
+  entryComponents: [
+    ImageComponent,
+    TextComponent,
+    LineComponent,
+    TableComponent
+  ]
 })
 export class AppModule { }

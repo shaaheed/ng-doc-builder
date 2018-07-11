@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewContainerRef, ComponentFactoryResolver, ViewChild } from '@angular/core';
 import { ImageComponent } from '../image/image.component';
-import { component } from '../common/component-constant';
+import { constant } from '../common/component-constant';
 import { TextComponent } from '../text/text.component';
+import { LineComponent } from '../line/line.component';
+import { TableComponent } from '../table/table.component';
 
 
 @Component({
@@ -30,11 +32,17 @@ export class DocumentComponent implements OnInit {
 
     if (from == 'block') {
       switch (componentType) {
-        case component.image.name:
+        case constant.image.name:
           this.crateComponent(ImageComponent, e.offsetX, e.offsetY);
           break;
-        case component.text.name:
+        case constant.text.name:
           this.crateComponent(TextComponent, e.offsetX, e.offsetY);
+          break;
+        case constant.line.name:
+          this.crateComponent(LineComponent, e.offsetX, e.offsetY);
+          break;
+        case constant.table.name:
+          this.crateComponent(TableComponent, e.offsetX, e.offsetY);
           break;
       }
     }

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { constant } from '../common/component-constant';
 
 @Component({
   selector: 'app-border-picker',
@@ -47,20 +48,7 @@ export class BorderPickerComponent implements OnInit {
 
   private isColotEditable: boolean = false;
 
-  options = [
-    {
-      name: 'Solid',
-      value: 'solid'
-    },
-    {
-      name: 'Dashed',
-      value: 'dashed'
-    },
-    {
-      name: 'Dotted',
-      value: 'dotted'
-    }
-  ]
+  options = constant.borderOptions;
 
   constructor() { }
 

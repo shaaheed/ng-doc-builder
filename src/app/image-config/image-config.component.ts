@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { property } from '../common/property-constant';
-import { ImageService } from '../services/image.service';
 import { ImageComponent } from '../image/image.component';
 import { CommonService } from '../services/common.service';
 

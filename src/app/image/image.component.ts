@@ -4,7 +4,7 @@ import { ISubscription } from 'rxjs/Subscription';
 import { BaseComponent } from '../base.component';
 import { ImageService } from '../services/image.service';
 import { property } from '../common/property-constant';
-import { component } from '../common/component-constant';
+import { constant } from '../common/component-constant';
 import { CommonService } from '../services/common.service';
 import { environment } from '../../environments/environment';
 
@@ -24,8 +24,8 @@ export class ImageComponent extends BaseComponent implements OnInit {
   borderColor: string = '#000000';
   filename: string;
   id: string;
-  name: string = component.image.name;
-  title: string = component.image.title;
+  name: string = constant.image.name;
+  title: string = constant.image.title;
   aspectRatio: boolean;
   loader: boolean = false;
 

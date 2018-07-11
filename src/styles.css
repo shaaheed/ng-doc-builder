@@ -243,7 +243,7 @@ h4, h5 {
     padding-right: 15px;
 }
 
-app-text .text-mover-area {
+.mover-area {
     position: absolute;
     height: 8px;
     width: calc(100% - 10px);
@@ -297,6 +297,23 @@ app-text .text {
     box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 2px 0px;
 }
 
+app-line .line-parent {
+    padding: 8px 0;
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+
+app-line .line-parent:hover {
+    border: 1px solid #dddddd;
+}
+
+app-table .table {
+    border-collapse: collapse;
+}
+
+app-table .table td {
+    padding: 0;
+}
+
 @-webkit-keyframes spin {
     0% { -webkit-transform: rotate(0deg); }
     100% { -webkit-transform: rotate(360deg); }
@@ -344,4 +361,8 @@ app-text .text {
 
 .box-shadow-none {
     box-shadow: none;
+}
+
+.position-absolute {
+    position: absolute;
 }
