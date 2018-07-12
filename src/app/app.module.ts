@@ -31,6 +31,7 @@ import { TextControlsComponent } from './shared-components/text-controls.compone
 import { LineComponent } from './line/line.component';
 import { LineConfigComponent } from './line-config/line-config.component';
 import { TableComponent } from './table/table.component';
+import { TableConfigComponent } from './table-config/table-config.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { TableComponent } from './table/table.component';
     LineComponent,
     LineConfigComponent,
     TableComponent,
+    TableConfigComponent,
   ],
   imports: [
     BrowserModule,

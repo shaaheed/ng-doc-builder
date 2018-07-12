@@ -2,10 +2,12 @@
 <div class="doc-area">
     <div class="doc-left">
         <div class="config-header">
+            <!-- <ng-container *ngIf="selectedComponent && selectedComponent.name != 'document'" > -->
             <mat-icon *ngIf="selectedComponent" (click)="back()" class="cursor-pointer back ">keyboard_backspace</mat-icon>
             <div class="title">
                 <h4>{{ selectedComponent ? selectedComponent.title : 'Components' }}</h4>
             </div>
+            <!-- </ng-container> -->
         </div>
         <div class="block-container" *ngIf="!selectedComponent">
             <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'image')">
@@ -27,6 +29,7 @@
             <app-image-config *ngSwitchCase="'image'"></app-image-config>
             <app-text-config *ngSwitchCase="'text'"></app-text-config>
             <app-line-config *ngSwitchCase="'line'"></app-line-config>
+            <app-table-config *ngSwitchCase="'table'"></app-table-config>
         </div>
     </div>
     <div class="doc-pane">
