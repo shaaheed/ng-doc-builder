@@ -8,7 +8,7 @@ body, html {
     overflow: hidden;
     height: 100%;
     font-family: sans-serif;
-    color: #6c6c6c;
+    color: #969ea8;
 }
 
 h4, h5 {
@@ -27,12 +27,39 @@ h4, h5 {
 }
 
 .doc-left {
-    width: 345px;
+    width: 380px;
     background: white;
     position: absolute;
     height: 100%;
-    top: 52px;
-    padding: 0 0 30px 30px;
+    top: 58px;
+}
+
+.doc-left .top-header {
+    border-bottom: 3px solid #eff2f4;
+    box-shadow: none;
+    padding: 0;
+    height: 65px;
+}
+
+.doc-left .top-header .title {
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    cursor: pointer;
+}
+
+.doc-left .top-header .title.selected {
+    box-shadow: 0 3px 0 0 #3c91e6;
+}
+
+.doc-left .top-header .title.selected h4 {
+    font-size: 14px;
+    color: #3c91e6;
+}
+
+.doc-left .bottom {
+    padding: 0 0 30px 30px
 }
 
 .doc-pane {
@@ -49,25 +76,31 @@ h4, h5 {
 
 #document {
     position: relative;
-    max-width: 595px;
+    max-width: 695px;
     height: 842px;
     background-color: rgb(255, 255, 255) !important;
     margin: 0 auto;
     padding: 50px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 3px;
+    box-shadow: 0 0 0 1px #AAD7F9, 0 0 30px 0 rgba(0, 0, 0, 0.05);
     overflow: hidden;
+}
+
+.document-body {
+    background-image: linear-gradient(to right, #f6f8f9 1px, transparent 1px), linear-gradient(to bottom, #f6f8f9 1px, transparent 1px);
+    background-size: 10px 10px;
+    width: 100%;
+    height: 100%;
 }
 
 .config {
     overflow-y: auto;
-    height: calc(100vh - 120px);
+    height: calc(100vh - 192px);
     padding-right: 30px;
 }
 
 .config-header {
     display: flex;
     padding: 25px 0;
-    margin-right: 30px;
     align-items: center;
     box-shadow: inset 0 -1px 0 #e5e5e5;
 }
@@ -80,6 +113,7 @@ h4, h5 {
     text-align: center;
     flex: 1;
     text-transform: capitalize;
+    font-size: 14px;
 }
 
 .block-container {
@@ -90,27 +124,45 @@ h4, h5 {
 
 
 .block-container .block {
-    border: 1px solid #e5e5e5;
-    background: #f4f4f4;
-    color: #000;
+    color: #3c91e6;
     cursor: move;
     display: flex;
     padding: 20px 0;
     -webkit-box-flex: 1;
     flex-basis: 45%;
+    box-shadow: 0 0 0 1px #AAD7F9, 0 0 30px 0 rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+    flex-direction: column;
+    align-items: center;
 }
 
 .block-container .block .mat-icon {
-    flex: 1;
-    height: 100%;
     font-size: 45px;
     text-align: center;
-    color: #a0a0a0;
-    line-height: 70px;
+    color: #3c91e6;
+    width: 45px;
+    height: 45px;
+}
+
+.block-container .block span {
+    text-transform: uppercase;
+    font-size: 11px;
+    display: block;
+    font-weight: bold;
+    padding-top: 15px;
+    color: #000;
 }
 
 .block-container .block:hover {
-    background: white;
+    background: #3c91e6;
+}
+
+.block-container .block:hover .mat-icon {
+    color: #fff;
+}
+
+.block-container .block:hover span {
+    color: #fff;
 }
 
 .picker {
@@ -140,19 +192,21 @@ h4, h5 {
     width: 55px;
     height: 23px;
     border-radius: 3px;
-    border: 1px solid #b7b7b7;
+    border: 1px solid #d3dbde;
     padding: 0 25px 0 5px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #97a0a9;
 }
 
 .picker .input-picker span,
 .border-width-picker span {
     position: absolute;
-    font-size: 14px;
+    font-size: 11px;
     right: 0px;
     line-height: 21px;
     height: calc(100% - 2px);
     padding: 0px 5px;
-    background: #ddd;
     margin: 1px 1px 1px 0;
     border-radius: 0 2px 2px 0;
 }
@@ -250,11 +304,6 @@ h4, h5 {
     width: calc(100% - 10px);
 }
 
-/* app-text .text:hover .text-mover-area {
-    background: #9c9c9c3d;
-    box-shadow: rgba(86, 86, 86, 0.15) 0px 2px 3px;
-} */
-
 .action-button {
     position: absolute;
     height: 25px;
@@ -269,6 +318,8 @@ app-text .text {
 
 .text textarea {
     resize: none;
+    background: transparent;
+    border: none;
 }
 
 .picker.text-controls {
@@ -278,15 +329,17 @@ app-text .text {
 .text-controls mat-icon {
     text-align: center;
     flex: 1;
-    padding: 10px 0;
+    padding: 8px 0;
     border-radius: 3px;
     cursor: pointer;
     margin: 0 1px;
+    background: #e9eef1;
 }
 
 .text-controls .mat-icon:hover,
 .text-controls .mat-icon.active {
-    background: #dddddd;
+    background: #3c91e6;
+    color: #fff;
 }
 
 .block-active, .dropzone-hover {
@@ -301,10 +354,6 @@ app-text .text {
 app-line .line-parent {
     padding: 8px 0;
     border: 1px solid rgba(0, 0, 0, 0);
-}
-
-app-line .line-parent:hover {
-    border: 1px solid #dddddd;
 }
 
 app-table .table {
@@ -352,6 +401,10 @@ app-table .table td {
     color: #ff4081;
 }
 
+.color-blue {
+    color: #3c91e6;
+}
+
 .flex {
     display: flex;
 }
@@ -366,4 +419,44 @@ app-table .table td {
 
 .position-absolute {
     position: absolute;
+}
+
+.component:hover .controls,
+.text:hover .controls {
+    display: block;
+}
+
+.controls {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: -10px;
+    transform: translateY(-50%);
+}
+
+.controls mat-icon {
+    font-size: 16px;
+    height: 18px;
+    width: 18px;
+    cursor: pointer;
+}
+
+.controls mat-icon:hover {
+    color: #3c91e6;
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color: rgb(170, 215, 249);
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: #3c91e6;
+}
+
+.component {
+    box-shadow: 0 0 0 1px rgba(60, 145, 230, 0.3);
+}
+
+.component:hover {
+    box-shadow: 0 0 0 1px rgba(60, 145, 230, 0.8);
 }
