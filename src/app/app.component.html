@@ -1,35 +1,47 @@
 <app-header></app-header>
 <div class="doc-area">
     <div class="doc-left">
-        <div class="config-header">
-            <!-- <ng-container *ngIf="selectedComponent && selectedComponent.name != 'document'" > -->
-            <mat-icon *ngIf="selectedComponent" (click)="back()" class="cursor-pointer back ">keyboard_backspace</mat-icon>
-            <div class="title">
-                <h4>{{ selectedComponent ? selectedComponent.title : 'Components' }}</h4>
+        <div class="config-header top-header">
+            <div class="title" [class.selected]="seletectedTab == 'document'" (click)="changeTab('document')">
+                <h4>Document Details</h4>
             </div>
-            <!-- </ng-container> -->
-        </div>
-        <div class="block-container" *ngIf="!selectedComponent">
-            <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'image')">
-                <mat-icon>insert_photo</mat-icon>
-            </div>
-            <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'text')">
-                <mat-icon>text_format</mat-icon>
+            <div class="title" [class.selected]="seletectedTab == 'components'" (click)="changeTab('components')">
+                <h4>Components</h4>
             </div>
         </div>
-        <div class="block-container" *ngIf="!selectedComponent">
-            <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'line')">
-                <mat-icon>remove</mat-icon>
+        <div class="bottom">
+            <div class="config-header" *ngIf="selectedComponent">
+                <mat-icon (click)="back()" class="cursor-pointer back ">keyboard_backspace</mat-icon>
+                <div class="title">
+                    <h4>{{ selectedComponent.title }}</h4>
+                </div>
             </div>
-            <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'table')">
-                <mat-icon>grid_on</mat-icon>
+            <div class="block-container" *ngIf="!selectedComponent">
+                <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'image')">
+                    <mat-icon>insert_photo</mat-icon>
+                    <span>Image</span>
+                </div>
+                <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'text')">
+                    <mat-icon>text_format</mat-icon>
+                    <span>Text</span>
+                </div>
             </div>
-        </div>
-        <div *ngIf="selectedComponent" class="config" [ngSwitch]="selectedComponent.name">
-            <app-image-config *ngSwitchCase="'image'"></app-image-config>
-            <app-text-config *ngSwitchCase="'text'"></app-text-config>
-            <app-line-config *ngSwitchCase="'line'"></app-line-config>
-            <app-table-config *ngSwitchCase="'table'"></app-table-config>
+            <div class="block-container" *ngIf="!selectedComponent">
+                <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'line')">
+                    <mat-icon>remove</mat-icon>
+                    <span>Line</span>
+                </div>
+                <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'table')">
+                    <mat-icon>grid_on</mat-icon>
+                    <span>Table</span>
+                </div>
+            </div>
+            <div *ngIf="selectedComponent" class="config" [ngSwitch]="selectedComponent.name">
+                <app-image-config *ngSwitchCase="'image'"></app-image-config>
+                <app-text-config *ngSwitchCase="'text'"></app-text-config>
+                <app-line-config *ngSwitchCase="'line'"></app-line-config>
+                <app-table-config *ngSwitchCase="'table'"></app-table-config>
+            </div>
         </div>
     </div>
     <div class="doc-pane">

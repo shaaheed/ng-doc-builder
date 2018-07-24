@@ -10,6 +10,7 @@ import { CommonService } from './services/common.service';
 export class AppComponent extends BaseComponent {
 
   selectedComponent: any;
+  seletectedTab: string;
 
   constructor(
     private imageService: ImageService,
@@ -19,6 +20,8 @@ export class AppComponent extends BaseComponent {
 
   ngOnInit() {
     this.subscribe(this.common.openSettings, this.openSettings.bind(this));
+    this.subscribe(this.common.closeSettings, () => { this.selectedComponent = null })
+    this.seletectedTab = 'document';
   }
 
   dragStartEvent(e: DragEvent, block) {
@@ -34,6 +37,10 @@ export class AppComponent extends BaseComponent {
     if (this.selectedComponent !== null) {
       this.selectedComponent = null;
     }
+  }
+
+  changeTab(tab) {
+    this.seletectedTab = tab;
   }
 
 }
