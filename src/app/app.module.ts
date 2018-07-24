@@ -32,6 +32,7 @@ import { LineComponent } from './line/line.component';
 import { LineConfigComponent } from './line-config/line-config.component';
 import { TableComponent } from './table/table.component';
 import { TableConfigComponent } from './table-config/table-config.component';
+import { ControlsComponent } from './shared-components/controls.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { TableConfigComponent } from './table-config/table-config.component';
     LineConfigComponent,
     TableComponent,
     TableConfigComponent,
+    ControlsComponent
   ],
   imports: [
     BrowserModule,
