@@ -90,4 +90,8 @@ export class TextComponent extends BaseComponent implements OnInit {
     this.unsubscribe();
   }
 
+  delete() {
+    
+  }
+
 }
