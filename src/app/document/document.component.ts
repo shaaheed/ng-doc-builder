@@ -4,23 +4,48 @@ import { constant } from '../common/component-constant';
 import { TextComponent } from '../text/text.component';
 import { LineComponent } from '../line/line.component';
 import { TableComponent } from '../table/table.component';
+import { CommonService } from '../services/common.service';
+import { BaseComponent } from '../base.component';
 
 
 @Component({
   selector: 'app-document',
   templateUrl: './document.component.html',
 })
-export class DocumentComponent implements OnInit {
+export class DocumentComponent extends BaseComponent implements OnInit {
 
   isDropzoneHovered = false;
   @ViewChild('componentHost', {
     read: ViewContainerRef
   }) viewContainerRef: ViewContainerRef;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
+  private components: any[] = [];
+
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private common: CommonService) {
+    super();
+  }
 
   ngOnInit() {
     // console.log(ui("#document"));
+
+    // copy component
+    this.subscribe(this.common.copyComponent, x => {
+      console.log('copy', x);
+      const comRef = this.components[x.id];
+      this.createComponent(comRef.componentType, x.left + 5, x.top - 5);
+    });
+
+    // delete component
+    this.subscribe(this.common.deleteComponent, x => {
+      console.log('delete', x);
+      this.components[x.id].destroy();
+      this.common.closeSettings.next();
+    });
+
+
+
   }
 
   dropEvent(e: DragEvent) {
@@ -33,28 +58,29 @@ export class DocumentComponent implements OnInit {
     if (from == 'block') {
       switch (componentType) {
         case constant.image.name:
-          this.crateComponent(ImageComponent, e.offsetX, e.offsetY);
+          this.createComponent(ImageComponent, e.offsetX, e.offsetY);
           break;
         case constant.text.name:
-          this.crateComponent(TextComponent, e.offsetX, e.offsetY);
+          this.createComponent(TextComponent, e.offsetX, e.offsetY);
           break;
         case constant.line.name:
-          this.crateComponent(LineComponent, e.offsetX, e.offsetY);
+          this.createComponent(LineComponent, e.offsetX, e.offsetY);
           break;
         case constant.table.name:
-          this.crateComponent(TableComponent, e.offsetX, e.offsetY);
+          this.createComponent(TableComponent, e.offsetX, e.offsetY);
           break;
       }
     }
 
   }
 
-  crateComponent(componentRef, left, top) {
+  createComponent(componentRef, left, top) {
     const factory = this.componentFactoryResolver.resolveComponentFactory(componentRef);
     const c = factory.create(this.viewContainerRef.parentInjector);
     this.viewContainerRef.insert(c.hostView);
     c.instance['top'] = top;
     c.instance['left'] = left;
+    this.components[c.instance['id']] = c;
   }
 
   dragOverEvent(e) {
@@ -73,6 +99,10 @@ export class DocumentComponent implements OnInit {
     } else {
       this.isDropzoneHovered = false;
     }
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe();
   }
 
 }
