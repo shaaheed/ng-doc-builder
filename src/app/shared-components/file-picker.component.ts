@@ -6,7 +6,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   <div class="picker">
     <h5>{{title}}</h5>
     <div class="control file-picker">
-      <mat-icon class="cursor-pointer" [class.color-pink]="filename" (click)="fileInput.click()">cloud_upload</mat-icon>
+      <mat-icon class="cursor-pointer" [class.color-blue]="filename" (click)="fileInput.click()">cloud_upload</mat-icon>
       <span class="file-name">{{filename ? filename : ''}}</span>
     </div>
     <input #fileInput hidden type="file" (change)="fileInputChange($event)" accept="image/*">
