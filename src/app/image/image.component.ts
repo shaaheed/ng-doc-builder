@@ -112,13 +112,21 @@ export class ImageComponent extends BaseComponent implements OnInit {
     this.heightRate = naturalHeight / naturalWidth;
   }
 
-  showLoader(value){
+  showLoader(value) {
     console.log('value', value);
     this.loader = value;
   }
 
   ngOnDestroy() {
     this.unsubscribe();
+  }
+
+  delete() {
+    this.common.deleteComponent.next(this)
+  }
+
+  copy() {
+    this.common.copyComponent.next(this);
   }
 
 }
