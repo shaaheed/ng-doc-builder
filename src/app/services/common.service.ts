@@ -6,6 +6,9 @@ export class CommonService {
 
     private model: any;
     openSettings: Subject<any> = new Subject();
+    closeSettings: Subject<any> = new Subject();
+    deleteComponent: Subject<any> = new Subject();
+    copyComponent: Subject<any> = new Subject();
 
     constructor() { }
 
