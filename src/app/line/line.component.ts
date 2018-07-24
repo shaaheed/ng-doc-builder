@@ -86,4 +86,8 @@ export class LineComponent extends BaseComponent implements OnInit {
     this.unsubscribe();
   }
 
+  delete() {
+    // this.viewContainerRef.
+  }
+
 }
