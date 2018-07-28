@@ -1,11 +1,8 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import * as interact from 'interactjs'
 import { BaseComponent } from '../base.component';
-import { ImageService } from '../services/image.service';
-import { property } from '../common/property-constant';
-import { constant } from '../common/component-constant';
+import { constant } from '../common/constant';
 import { CommonService } from '../services/common.service';
-import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-table',
@@ -13,15 +10,9 @@ import { environment } from '../../environments/environment';
 })
 export class TableComponent extends BaseComponent implements OnInit {
 
-  top: number;
-  left: number;
-  width: number = 400;
   borderString: string;
   style: string = 'solid';
   color: string = '#000000';
-  id: string;
-  name: string = constant.table.name;
-  title: string = constant.table.title;
   thData: any[] = [];
   data: any[][] = [[]];
 
@@ -44,16 +35,13 @@ export class TableComponent extends BaseComponent implements OnInit {
     return this._rows;
   }
 
-  private el: HTMLElement;
-  private wasDrag = false;
-
   constructor(
-    private elRef: ElementRef,
-    private common: CommonService) {
+    public elRef: ElementRef,
+    public common: CommonService) {
 
-    super();
-    this.el = elRef.nativeElement;
-    this.id = uuid();
+    super(common, elRef);
+    this.width = 400;
+    this.setNameTitle(constant.table.name);
     this.data = [
       ['a', 'b', 'c'],
       ['a', 'b', 'c'],
@@ -89,16 +77,6 @@ export class TableComponent extends BaseComponent implements OnInit {
 
   getThData(i: number): string {
     return this.thData[i];
-  }
-
-  openSettings(e) {
-    // ignore drag ending click event
-    if (this.wasDrag) {
-      this.wasDrag = false;
-    } else {
-      this.common.setModel(this);
-      this.common.openSettings.next();
-    }
   }
 
   ngOnDestroy() {

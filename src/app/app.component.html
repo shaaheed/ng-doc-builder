@@ -16,7 +16,7 @@
                     <h4>{{ selectedComponent.title }}</h4>
                 </div>
             </div>
-            <div class="block-container" *ngIf="!selectedComponent">
+            <div class="block-container" *ngIf="!selectedComponent && seletectedTab == 'components'">
                 <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'image')">
                     <mat-icon>insert_photo</mat-icon>
                     <span>Image</span>
@@ -26,7 +26,7 @@
                     <span>Text</span>
                 </div>
             </div>
-            <div class="block-container" *ngIf="!selectedComponent">
+            <div class="block-container" *ngIf="!selectedComponent && seletectedTab == 'components'">
                 <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'line')">
                     <mat-icon>remove</mat-icon>
                     <span>Line</span>
@@ -36,12 +36,20 @@
                     <span>Table</span>
                 </div>
             </div>
+            <div class="block-container" *ngIf="!selectedComponent && seletectedTab == 'components'">
+                <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'area')">
+                    <mat-icon>crop_din</mat-icon>
+                    <span>Area</span>
+                </div>
+            </div>
             <div *ngIf="selectedComponent" class="config" [ngSwitch]="selectedComponent.name">
                 <app-image-config *ngSwitchCase="'image'"></app-image-config>
                 <app-text-config *ngSwitchCase="'text'"></app-text-config>
                 <app-line-config *ngSwitchCase="'line'"></app-line-config>
                 <app-table-config *ngSwitchCase="'table'"></app-table-config>
+                <app-area-config *ngSwitchCase="'area'"></app-area-config>
             </div>
+            <app-document-config class="document-config" *ngIf="seletectedTab == 'document'"></app-document-config>
         </div>
     </div>
     <div class="doc-pane">

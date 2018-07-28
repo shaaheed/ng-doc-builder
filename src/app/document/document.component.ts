@@ -1,12 +1,12 @@
-import { Component, OnInit, ViewContainerRef, ComponentFactoryResolver, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ComponentFactoryResolver, ViewChild, ElementRef } from '@angular/core';
 import { ImageComponent } from '../image/image.component';
-import { constant } from '../common/component-constant';
+import { constant } from '../common/constant';
 import { TextComponent } from '../text/text.component';
 import { LineComponent } from '../line/line.component';
 import { TableComponent } from '../table/table.component';
-import { CommonService } from '../services/common.service';
 import { BaseComponent } from '../base.component';
-
+import { AreaComponent } from '../area/area.component';
+import { CommonService } from '../services/common.service';
 
 @Component({
   selector: 'app-document',
@@ -23,13 +23,13 @@ export class DocumentComponent extends BaseComponent implements OnInit {
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
-    private common: CommonService) {
-    super();
+    public elRef: ElementRef,
+    public common: CommonService) {
+    super(common, elRef);
+    // this.setNameTitle('document')
   }
 
   ngOnInit() {
-    // console.log(ui("#document"));
-
     // copy component
     this.subscribe(this.common.copyComponent, x => {
       console.log('copy', x);
@@ -43,8 +43,6 @@ export class DocumentComponent extends BaseComponent implements OnInit {
       this.components[x.id].destroy();
       this.common.closeSettings.next();
     });
-
-
 
   }
 
@@ -68,6 +66,9 @@ export class DocumentComponent extends BaseComponent implements OnInit {
           break;
         case constant.table.name:
           this.createComponent(TableComponent, e.offsetX, e.offsetY);
+          break;
+        case constant.area.name:
+          this.createComponent(AreaComponent, e.offsetX, e.offsetY);
           break;
       }
     }
@@ -93,7 +94,6 @@ export class DocumentComponent extends BaseComponent implements OnInit {
 
   dragEnterEvent(e) {
     const from = e.dataTransfer.getData('from');
-    console.log('from', from);
     if (from == 'block' || from == '') {
       this.isDropzoneHovered = true;
     } else {

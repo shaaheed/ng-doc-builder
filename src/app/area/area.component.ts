@@ -1,39 +1,30 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import * as interact from 'interactjs'
 import { BaseComponent } from '../base.component';
-import { ImageService } from '../services/image.service';
 import { constant } from '../common/constant';
 import { CommonService } from '../services/common.service';
 
 @Component({
-  selector: 'app-line',
-  templateUrl: './line.component.html',
+  selector: 'app-area',
+  templateUrl: './area.component.html',
 })
-export class LineComponent extends BaseComponent implements OnInit {
+export class AreaComponent extends BaseComponent implements OnInit {
 
-  borderString: string;
-  style: string = 'solid';
-  color: string = '#000000';
-
-  private _border: number = 1;
-
-  set border(value: number) {
-    this._border = value;
-    this.borderString = this.makeBorderStringFrom(value);
-  }
-
-  get border(): number {
-    return this._border;
-  }
+  border: boolean;
+  borderWidth: number = 1;
+  borderStyle: string = 'solid';
+  borderColor: string = '#000000';
+  background: string = '#ffffff';
 
   constructor(
     public elRef: ElementRef,
     public common: CommonService) {
 
     super(common, elRef);
+    this.setNameTitle(constant.area.name)
     this.width = 100;
-    this.setNameTitle(constant.line.name)
-    this.borderString = this.makeBorderStringFrom(this.border)
+    this.height = 100;
+
   }
 
   ngOnInit() {
@@ -47,18 +38,14 @@ export class LineComponent extends BaseComponent implements OnInit {
         this.left = this.left + e.dx;
       }
     }).resizable({
-      edges: { left: true, right: true, bottom: false, top: false },
+      edges: { left: true, right: true, bottom: true, top: true },
     }).on('resizemove', (e) => {
       const _e = <any>e;
-      const newWidth = _e.rect.width;
-      this.width = newWidth;
+      this.width = _e.rect.width;
+      this.height = _e.rect.height;
       this.top = this.top + _e.deltaRect.top;
       this.left = this.left + _e.deltaRect.left;
     });
-  }
-
-  makeBorderStringFrom(value): string {
-    return `0 0 ${value}px 0`;
   }
 
   ngOnDestroy() {

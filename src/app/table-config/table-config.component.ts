@@ -1,27 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { TableComponent } from '../table/table.component';
-import { constant } from '../common/component-constant';
+import { constant } from '../common/constant';
 import { CommonService } from '../services/common.service';
+import { BaseConfigComponent } from '../base-config.component';
 
 @Component({
   selector: 'app-table-config',
   templateUrl: './table-config.component.html',
 })
-export class TableConfigComponent implements OnInit {
-
-  model: TableComponent;
+export class TableConfigComponent extends BaseConfigComponent implements OnInit {
 
   styleOptions: any[] = constant.borderOptions;
 
   constructor(
-    private common: CommonService) {
+    public common: CommonService) {
+      super(common);
   }
 
   ngOnInit() {
-    this.model = this.common.getModel<TableComponent>();
-    this.common.openSettings.subscribe(x => {
-      this.model = this.common.getModel<TableComponent>();
-    })
+   this.initModel<TableComponent>();
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe();
   }
 
 }

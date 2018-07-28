@@ -1,9 +1,9 @@
 import { Component, OnInit, ElementRef, Renderer2, ViewChild } from '@angular/core';
-import { constant } from '../common/component-constant';
-import { CommonService } from '../services/common.service';
+import { constant } from '../common/constant';
 import * as interact from 'interactjs'
 import { BaseComponent } from '../base.component';
 import { MatAutocompleteTrigger } from '@angular/material';
+import { CommonService } from '../services/common.service';
 
 @Component({
   selector: 'app-text',
@@ -11,13 +11,6 @@ import { MatAutocompleteTrigger } from '@angular/material';
 })
 export class TextComponent extends BaseComponent implements OnInit {
 
-  id: string;
-  name: string = constant.text.name;
-  title: string = constant.text.title;
-  top: string;
-  left: string;
-  width: number = 150;
-  height: number = 22;
   color: string = '#000000';
   fontSize: number = 14;
   fontFamily: string = 'sans-serif';
@@ -34,20 +27,16 @@ export class TextComponent extends BaseComponent implements OnInit {
     { name: 'Four', value: 'four' },
   ];
 
-
   // @ViewChild('autoCompleteTrigger', { read: MatAutocompleteTrigger }) autoCompleteTrigger: MatAutocompleteTrigger;
 
-  private el: HTMLElement;
-  private wasDrag = false;
-
   constructor(
-    private elRef: ElementRef,
-    private renderer2: Renderer2,
-    private common: CommonService) {
+    public elRef: ElementRef,
+    public common: CommonService) {
 
-    super();
-    this.el = elRef.nativeElement;
-    this.id = uuid();
+    super(common, elRef);
+    this.setNameTitle(constant.text.name);
+    this.width = 150;
+    this.height = 22;
 
   }
 
@@ -76,22 +65,8 @@ export class TextComponent extends BaseComponent implements OnInit {
     });
   }
 
-  openSettings(e) {
-    // ignore drag ending click event
-    if (this.wasDrag) {
-      this.wasDrag = false;
-    } else {
-      this.common.setModel(this);
-      this.common.openSettings.next();
-    }
-  }
-
   ngOnDestroy() {
     this.unsubscribe();
-  }
-
-  delete() {
-    
   }
 
 }

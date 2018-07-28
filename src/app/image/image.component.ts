@@ -4,7 +4,7 @@ import { ISubscription } from 'rxjs/Subscription';
 import { BaseComponent } from '../base.component';
 import { ImageService } from '../services/image.service';
 import { property } from '../common/property-constant';
-import { constant } from '../common/component-constant';
+import { constant } from '../common/constant';
 import { CommonService } from '../services/common.service';
 import { environment } from '../../environments/environment';
 
@@ -14,18 +14,11 @@ import { environment } from '../../environments/environment';
 })
 export class ImageComponent extends BaseComponent implements OnInit {
 
-  top: number;
-  left: number;
-  width: number = 100;
-  height: number = 100;
   border: boolean;
   borderWidth: number = 1;
   borderStyle: string = 'solid';
   borderColor: string = '#000000';
   filename: string;
-  id: string;
-  name: string = constant.image.name;
-  title: string = constant.image.title;
   aspectRatio: boolean;
   loader: boolean = false;
 
@@ -33,10 +26,8 @@ export class ImageComponent extends BaseComponent implements OnInit {
   private widthRate: number;
   private heightRate: number;
 
-  private el: HTMLElement;
   private imgEl: any;
   private base64ImagePrefix = 'data:image/png;base64,';
-  private wasDrag = false;
 
   set src(newSrc: string) {
     this._src = newSrc;
@@ -49,14 +40,13 @@ export class ImageComponent extends BaseComponent implements OnInit {
   };
 
   constructor(
-    private elRef: ElementRef,
-    private service: ImageService,
-    private renderer2: Renderer2,
-    private common: CommonService) {
+    public elRef: ElementRef,
+    public common: CommonService) {
 
-    super();
-    this.el = elRef.nativeElement;
-    this.id = uuid();
+    super(common, elRef);
+    this.width = 100;
+    this.height = 100;
+    this.setNameTitle(constant.image.name);
   }
 
   ngOnInit() {
@@ -94,16 +84,6 @@ export class ImageComponent extends BaseComponent implements OnInit {
     });
   }
 
-  openSettings(e) {
-    // ignore drag ending click event
-    if (this.wasDrag) {
-      this.wasDrag = false;
-    } else {
-      this.common.setModel(this);
-      this.common.openSettings.next();
-    }
-  }
-
   loadEvent(e) {
     // getting width, height rate for maintaining aspect ratio of the image
     const naturalWidth = this.imgEl.naturalWidth;
@@ -119,14 +99,6 @@ export class ImageComponent extends BaseComponent implements OnInit {
 
   ngOnDestroy() {
     this.unsubscribe();
-  }
-
-  delete() {
-    this.common.deleteComponent.next(this)
-  }
-
-  copy() {
-    this.common.copyComponent.next(this);
   }
 
 }

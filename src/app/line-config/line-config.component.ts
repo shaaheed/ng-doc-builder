@@ -1,27 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../services/common.service';
 import { LineComponent } from '../line/line.component';
-import { constant } from '../common/component-constant';
+import { constant } from '../common/constant';
+import { BaseConfigComponent } from '../base-config.component';
 
 @Component({
   selector: 'app-line-config',
   templateUrl: './line-config.component.html',
 })
-export class LineConfigComponent implements OnInit {
-
-  model: LineComponent;
+export class LineConfigComponent extends BaseConfigComponent implements OnInit {
 
   styleOptions: any[] = constant.borderOptions;
 
   constructor(
-    private common: CommonService) {
+    public common: CommonService) {
+      super(common);
   }
 
   ngOnInit() {
-    this.model = this.common.getModel<LineComponent>();
-    this.common.openSettings.subscribe(x => {
-      this.model = this.common.getModel<LineComponent>();
-    })
+    this.initModel<LineComponent>();
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe();
   }
 
 }

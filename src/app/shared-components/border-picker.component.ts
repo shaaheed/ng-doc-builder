@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { constant } from '../common/component-constant';
+import { constant } from '../common/constant';
 
 @Component({
   selector: 'app-border-picker',

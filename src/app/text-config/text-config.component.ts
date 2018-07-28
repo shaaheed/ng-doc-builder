@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../services/common.service';
 import { TextComponent } from '../text/text.component';
+import { BaseConfigComponent } from '../base-config.component';
 
 @Component({
   selector: 'app-text-config',
   templateUrl: './text-config.component.html',
 })
-export class TextConfigComponent implements OnInit {
+export class TextConfigComponent extends BaseConfigComponent implements OnInit {
 
-  model: TextComponent;
   fontFamilyOptions: any[] = [
     { name: 'Sans Serif', value: 'sans-serif' },
     { name: 'Serif', value: 'serif' },
@@ -16,13 +16,12 @@ export class TextConfigComponent implements OnInit {
   ]
 
   constructor(
-    private common: CommonService) { }
+    public common: CommonService) {
+      super(common)
+    }
 
   ngOnInit() {
-    this.model = this.common.getModel<TextComponent>();
-    this.common.openSettings.subscribe(x => {
-      this.model = this.common.getModel<TextComponent>();
-    })
+    this.initModel<TextComponent>();
   }
 
 }

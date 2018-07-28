@@ -33,12 +33,16 @@ import { LineConfigComponent } from './line-config/line-config.component';
 import { TableComponent } from './table/table.component';
 import { TableConfigComponent } from './table-config/table-config.component';
 import { ControlsComponent } from './shared-components/controls.component';
+import { DocumentConfigComponent } from './document-config/document-config.component';
+import { AreaComponent } from './area/area.component';
+import { AreaConfigComponent } from './area-config/area-config.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     DocumentComponent,
+    DocumentConfigComponent,
     HeaderComponent,
     ImageComponent,
     ImageConfigComponent,
@@ -55,7 +59,9 @@ import { ControlsComponent } from './shared-components/controls.component';
     LineConfigComponent,
     TableComponent,
     TableConfigComponent,
-    ControlsComponent
+    ControlsComponent,
+    AreaComponent,
+    AreaConfigComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +81,8 @@ import { ControlsComponent } from './shared-components/controls.component';
     ImageComponent,
     TextComponent,
     LineComponent,
-    TableComponent
+    TableComponent,
+    AreaComponent
   ]
 })
 export class AppModule { }

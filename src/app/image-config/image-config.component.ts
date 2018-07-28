@@ -1,24 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageComponent } from '../image/image.component';
 import { CommonService } from '../services/common.service';
+import { BaseComponent } from '../base.component';
+import { BaseConfigComponent } from '../base-config.component';
 
 @Component({
   selector: 'app-image-config',
   templateUrl: './image-config.component.html',
 })
-export class ImageConfigComponent implements OnInit {
-
-  model: ImageComponent;
+export class ImageConfigComponent extends BaseConfigComponent implements OnInit {
 
   constructor(
-    private common: CommonService) {
+    public common: CommonService) {
+    super(common)
   }
 
   ngOnInit() {
-    this.model = this.common.getModel<ImageComponent>();
-    this.common.openSettings.subscribe(x => {
-      this.model = this.common.getModel<ImageComponent>();
-    })
+    this.initModel<ImageComponent>()
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe();
   }
 
 }

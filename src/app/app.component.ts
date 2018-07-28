@@ -1,21 +1,20 @@
 import { Component } from '@angular/core';
-import { ImageService } from './services/image.service';
 import { BaseComponent } from './base.component';
 import { CommonService } from './services/common.service';
+import { BaseCommonComponent } from './base-common.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
 })
-export class AppComponent extends BaseComponent {
+export class AppComponent extends BaseCommonComponent {
 
   selectedComponent: any;
   seletectedTab: string;
 
   constructor(
-    private imageService: ImageService,
-    private common: CommonService) {
-    super();
+    public common: CommonService) {
+    super(common);
   }
 
   ngOnInit() {
@@ -41,6 +40,13 @@ export class AppComponent extends BaseComponent {
 
   changeTab(tab) {
     this.seletectedTab = tab;
+    if (tab === 'document') {
+      this.selectedComponent = null;
+    }
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe();
   }
 
 }
