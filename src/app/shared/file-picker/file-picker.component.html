@@ -1,0 +1,14 @@
+<!--
+    Copyright (c) Sahidul Islam. All Rights Reserved.
+    Author: https://github.com/shaaheed
+-->
+
+<div class="picker">
+  <h5>{{title}}</h5>
+  <div class="control file-picker">
+    <i class="cursor-pointer" [class.color-blue]="filename" (click)="fileInput.click()" nz-icon
+      nzType="cloud-upload"></i>
+    <span class="file-name">{{filename ? filename : ''}}</span>
+  </div>
+  <input #fileInput hidden type="file" (change)="fileInputChange($event)" accept="image/*">
+</div>

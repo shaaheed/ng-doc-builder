@@ -1,42 +1,42 @@
+// Copyright (c) Sahidul Islam. All Rights Reserved.
+// Author: https://github.com/shaaheed
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { DocumentComponent } from './document/document.component';
 import { HeaderComponent } from './header/header.component';
-import { ImageComponent } from './image/image.component';
+import { ImageComponent } from './image/image/image.component';
 import { ImageConfigComponent } from './image-config/image-config.component';
 import { ImageService } from './services/image.service';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import {
-  MatButtonModule,
-  MatIconModule,
-  MatSlideToggleModule,
-  MatCommonModule,
-  MatSelectModule,
-  MatAutocompleteModule,
-  MatSliderModule
-} from '@angular/material';
 import { TextComponent } from './text/text.component';
 import { CommonService } from './services/common.service';
-import { InputPickerComponent } from './shared-components/input-picker.component';
-import { FilePickerComponent } from './shared-components/file-picker.component';
-import { TogglePickerComponent } from './shared-components/toggle-picker.component';
-import { BorderPickerComponent } from './shared-components/border-picker.component';
+import { BorderPickerComponent } from './shared/border-picker/border-picker.component';
 import { TextConfigComponent } from './text-config/text-config.component';
-import { OptionPickerComponent } from './shared-components/option-picker.component';
-import { ColorPickerComponent } from './shared-components/color-picker.component';
-import { TextControlsComponent } from './shared-components/text-controls.component';
+import { ColorPickerComponent } from './shared/color-picker/color-picker.component';
 import { LineComponent } from './line/line.component';
 import { LineConfigComponent } from './line-config/line-config.component';
 import { TableComponent } from './table/table.component';
 import { TableConfigComponent } from './table-config/table-config.component';
-import { ControlsComponent } from './shared-components/controls.component';
 import { DocumentConfigComponent } from './document-config/document-config.component';
-import { AreaComponent } from './area/area.component';
-import { AreaConfigComponent } from './area-config/area-config.component';
+import { AreaComponent } from './area/area/area.component';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { HttpClientModule } from '@angular/common/http';
+import { InputPickerModule } from './shared/input-picker/input-picker.module';
+import { FilePickerModule } from './shared/file-picker/file-picker.module';
+import { TogglePickerModule } from './shared/toggle-picker/toggle-picker.module';
+import { OptionPickerModule } from './shared/option-picker/option-picker.module';
+import { TextControlsModule } from './shared/text-controls/text-controls.module';
+import { ControlsModule } from './shared/controls/controls.module';
+import { AreaConfigModule } from './area/config/config.module';
 
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -47,42 +47,33 @@ import { AreaConfigComponent } from './area-config/area-config.component';
     ImageComponent,
     ImageConfigComponent,
     TextComponent,
-    InputPickerComponent,
-    FilePickerComponent,
-    TogglePickerComponent,
     BorderPickerComponent,
     TextConfigComponent,
-    OptionPickerComponent,
     ColorPickerComponent,
-    TextControlsComponent,
     LineComponent,
     LineConfigComponent,
     TableComponent,
     TableConfigComponent,
-    ControlsComponent,
     AreaComponent,
-    AreaConfigComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    MatCommonModule,
-    MatButtonModule,
-    MatIconModule,
-    MatSlideToggleModule,
-    MatSelectModule,
-    MatAutocompleteModule,
     BrowserAnimationsModule,
-    MatSliderModule
+    HttpClientModule,
+    InputPickerModule,
+    FilePickerModule,
+    TogglePickerModule,
+    OptionPickerModule,
+    TextControlsModule,
+    ControlsModule,
+    AreaConfigModule,
   ],
-  providers: [CommonService, ImageService],
-  bootstrap: [AppComponent],
-  entryComponents: [
-    ImageComponent,
-    TextComponent,
-    LineComponent,
-    TableComponent,
-    AreaComponent
-  ]
+  providers: [
+    CommonService,
+    ImageService,
+    { provide: NZ_I18N, useValue: en_US }
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

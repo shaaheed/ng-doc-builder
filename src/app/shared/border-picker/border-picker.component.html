@@ -1,0 +1,31 @@
+<!--
+    Copyright (c) Sahidul Islam. All Rights Reserved.
+    Author: https://github.com/shaaheed
+-->
+
+<div class="picker" [class.box-shadow-none]="border">
+    <h5>{{title}}</h5>
+    <div class="control toggle-picker">
+        <app-switch [value]="border" (onChange)="toggleChange($event)"></app-switch>
+    </div>
+</div>
+<div class="picker padding-top-0" *ngIf="border">
+    <div class="control border-picker">
+        <div class="border-picker-item border-width-picker">
+            <input [value]="borderWidth" (input)="borderWidthChangeEvent($event)" type="text">
+            <span>px</span>
+        </div>
+        <div class="border-picker-item border-style-picker">
+            <app-select placeholder="Style" [value]="borderStyle" (onChange)="borderStyleChangeEvent($event)"
+                [options]="options">
+            </app-select>
+        </div>
+        <div class="border-picker-item border-color-picker">
+            <span *ngIf="!isColorEditable" (click)="makeColorEditable(true)" class="color-name">{{borderColor}}</span>
+            <input *ngIf="isColorEditable" (focusout)="makeColorEditable(false)" class="color-name"
+                [value]="borderColor">
+            <span (click)="colorInput.click()" class="color cursor-pointer" [style.background]="borderColor"></span>
+            <input [value]="borderColor" (input)="colorInputChangeEvent($event)" #colorInput hidden type="color" />
+        </div>
+    </div>
+</div>

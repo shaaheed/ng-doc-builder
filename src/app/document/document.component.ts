@@ -1,11 +1,14 @@
+// Copyright (c) Sahidul Islam. All Rights Reserved.
+// Author: https://github.com/shaaheed
+
 import { Component, OnInit, ViewContainerRef, ComponentFactoryResolver, ViewChild, ElementRef } from '@angular/core';
-import { ImageComponent } from '../image/image.component';
+import { ImageComponent } from '../image/image/image.component';
 import { constant } from '../common/constant';
 import { TextComponent } from '../text/text.component';
 import { LineComponent } from '../line/line.component';
 import { TableComponent } from '../table/table.component';
 import { BaseComponent } from '../base.component';
-import { AreaComponent } from '../area/area.component';
+import { AreaComponent } from '../area/area/area.component';
 import { CommonService } from '../services/common.service';
 
 @Component({
@@ -17,7 +20,7 @@ export class DocumentComponent extends BaseComponent implements OnInit {
   isDropzoneHovered = false;
   @ViewChild('componentHost', {
     read: ViewContainerRef
-  }) viewContainerRef: ViewContainerRef;
+  }) viewContainerRef?: ViewContainerRef;
 
   private components: any[] = [];
 

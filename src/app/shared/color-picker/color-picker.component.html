@@ -1,0 +1,12 @@
+<!--
+    Copyright (c) Sahidul Islam. All Rights Reserved.
+    Author: https://github.com/shaaheed
+-->
+
+<div class="picker">
+    <h5>{{title}}</h5>
+    <div class="control color-picker">
+    <span class="color-name">{{model}}</span>
+    <span (click)="colorInput.click()" class="color cursor-pointer" [style.background]="model"></span>
+    <input [value]="model" (input)="colorInputChangeEvent($event)" #colorInput hidden type="color" />
+  </div>

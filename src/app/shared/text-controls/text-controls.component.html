@@ -1,0 +1,14 @@
+<!--
+    Copyright (c) Sahidul Islam. All Rights Reserved.
+    Author: https://github.com/shaaheed
+-->
+
+<div class="picker text-controls">
+  <i nz-icon nzType="align-left" [class.active]="align == 'left'" (click)="changeAlign('left')"></i>
+  <i nz-icon nzType="align-center" [class.active]="align == 'center'" (click)="changeAlign('center')"></i>
+  <i nz-icon nzType="align-right" [class.active]="align == 'right'" (click)="changeAlign('right')"></i>
+  <i nz-icon nzType="menu" [class.active]="align == 'justify'" (click)="changeAlign('justify')"></i>
+  <i nz-icon nzType="bold" [class.active]="bold" (click)="toggleOption('bold')"></i>
+  <i nz-icon nzType="italic" [class.active]="italic" (click)="toggleOption('italic')"></i>
+  <i nz-icon nzType="underline" [class.active]="underline" (click)="toggleOption('underline')"></i>
+</div>
