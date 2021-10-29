@@ -1,0 +1,4 @@
+<div class="line-parent position-absolute component" (click)="openSettings($event)" [ngStyle]="{top: top + 'px', left: left + 'px', width: width + 'px'}">
+    <div class="line" [ngStyle]="{borderWidth: borderString, borderColor: color, borderStyle: style}"></div>
+    <app-controls (delete)="delete()" (copy)="copy()"></app-controls>
+</div>

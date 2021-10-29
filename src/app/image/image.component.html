@@ -1,0 +1,7 @@
+<div class="image component" (click)="openSettings($event)" [ngStyle]="{top: top + 'px', left: left + 'px', width: width + 'px', height: height + 'px', borderWidth: border ? borderWidth + 'px' : '', borderStyle:  border ? borderStyle : '', borderColor: border ? borderColor : '', position: 'absolute'}">
+    <div *ngIf="loader" class="img-loader-container">
+        <div class="img-loader"></div>
+    </div>
+    <img (load)="loadEvent($event)" [ngStyle]="{width: width + 'px', height: height + 'px'}" src="{{src}}">
+    <app-controls (delete)="delete()" (copy)="copy()"></app-controls>
+</div>
