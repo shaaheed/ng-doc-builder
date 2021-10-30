@@ -20,8 +20,7 @@ export class BorderPickerComponent implements OnInit {
   @Input() borderColor: string = '#000000';
   @Output() borderColorChange: EventEmitter<string> = new EventEmitter();
 
-  private isColorEditable: boolean = false;
-
+  isColorEditable: boolean = false;
   options = constant.borderOptions;
 
   constructor() { }

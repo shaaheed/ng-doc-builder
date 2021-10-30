@@ -1,12 +1,15 @@
+// Copyright (c) Sahidul Islam. All Rights Reserved.
+// Author: https://github.com/shaaheed
+
 import { Component, OnInit } from '@angular/core';
-import { CommonService } from '../services/common.service';
+import { BaseConfigComponent } from 'src/app/base-config.component';
+import { constant } from 'src/app/common/constant';
+import { CommonService } from 'src/app/services/common.service';
 import { LineComponent } from '../line/line.component';
-import { constant } from '../common/constant';
-import { BaseConfigComponent } from '../base-config.component';
 
 @Component({
   selector: 'app-line-config',
-  templateUrl: './line-config.component.html',
+  templateUrl: './config.component.html',
 })
 export class LineConfigComponent extends BaseConfigComponent implements OnInit {
 

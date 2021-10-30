@@ -1,44 +1,49 @@
+<!--
+    Copyright (c) Sahidul Islam. All Rights Reserved.
+    Author: https://github.com/shaaheed
+-->
+
 <app-header></app-header>
 <div class="doc-area">
     <div class="doc-left">
         <div class="config-header top-header">
-            <div class="title" [class.selected]="seletectedTab == 'document'" (click)="changeTab('document')">
+            <div class="title" [class.selected]="selectedTab == 'document'" (click)="changeTab('document')">
                 <h4>Document Details</h4>
             </div>
-            <div class="title" [class.selected]="seletectedTab == 'components'" (click)="changeTab('components')">
+            <div class="title" [class.selected]="selectedTab == 'components'" (click)="changeTab('components')">
                 <h4>Components</h4>
             </div>
         </div>
         <div class="bottom">
             <div class="config-header" *ngIf="selectedComponent">
-                <mat-icon (click)="back()" class="cursor-pointer back ">keyboard_backspace</mat-icon>
+                <i nz-icon nzType="arrow-left" (click)="back()" class="cursor-pointer back "></i>
                 <div class="title">
                     <h4>{{ selectedComponent.title }}</h4>
                 </div>
             </div>
-            <div class="block-container" *ngIf="!selectedComponent && seletectedTab == 'components'">
+            <div class="block-container" *ngIf="!selectedComponent && selectedTab == 'components'">
                 <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'image')">
-                    <mat-icon>insert_photo</mat-icon>
+                    <i nz-icon nzType="file-image"></i>
                     <span>Image</span>
                 </div>
                 <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'text')">
-                    <mat-icon>text_format</mat-icon>
+                    <i nz-icon nzType="font-size"></i>
                     <span>Text</span>
                 </div>
             </div>
-            <div class="block-container" *ngIf="!selectedComponent && seletectedTab == 'components'">
+            <div class="block-container" *ngIf="!selectedComponent && selectedTab == 'components'">
                 <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'line')">
-                    <mat-icon>remove</mat-icon>
+                    <i nz-icon nzType="line"></i>
                     <span>Line</span>
                 </div>
                 <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'table')">
-                    <mat-icon>grid_on</mat-icon>
+                    <i nz-icon nzType="table"></i>
                     <span>Table</span>
                 </div>
             </div>
-            <div class="block-container" *ngIf="!selectedComponent && seletectedTab == 'components'">
+            <div class="block-container" *ngIf="!selectedComponent && selectedTab == 'components'">
                 <div class="block" draggable="true" (dragstart)="dragStartEvent($event, 'area')">
-                    <mat-icon>crop_din</mat-icon>
+                    <i nz-icon nzType="border"></i>
                     <span>Area</span>
                 </div>
             </div>
@@ -49,7 +54,7 @@
                 <app-table-config *ngSwitchCase="'table'"></app-table-config>
                 <app-area-config *ngSwitchCase="'area'"></app-area-config>
             </div>
-            <app-document-config class="document-config" *ngIf="seletectedTab == 'document'"></app-document-config>
+            <app-document-config class="document-config" *ngIf="selectedTab == 'document'"></app-document-config>
         </div>
     </div>
     <div class="doc-pane">

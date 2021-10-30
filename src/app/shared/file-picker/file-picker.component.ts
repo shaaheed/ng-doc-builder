@@ -2,6 +2,7 @@
 // Author: https://github.com/shaaheed
 
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { getFileAsDataURL } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-file-picker',
@@ -18,13 +19,16 @@ export class FilePickerComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   fileInputChange(e: any) {
-    // getFileAsDataURL(e, (data) => {
-    //   this.filenameChange.emit(data.filename);
-    //   this.dataURLChange.emit(data.dataURL);
-    // }, (load) => { this.load.emit(load); })
+    getFileAsDataURL(e,
+      data => {
+        this.filenameChange.emit(data.filename);
+        this.dataURLChange.emit(data.dataURL);
+      },
+      load => this.load.emit(load)
+    );
   }
 
 

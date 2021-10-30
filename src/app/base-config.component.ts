@@ -1,3 +1,6 @@
+// Copyright (c) Sahidul Islam. All Rights Reserved.
+// Author: https://github.com/shaaheed
+
 import { CommonService } from "./services/common.service";
 import { BaseCommonComponent } from "./base-common.component";
 
@@ -11,7 +14,7 @@ export class BaseConfigComponent extends BaseCommonComponent {
 
     initModel<T>() {
         this.model = this.common.getModel<T>();
-        this.common.openSettings.subscribe(x => {
+        this.common.openSettings.subscribe((x: any) => {
             this.model = this.common.getModel<T>();
         })
     }

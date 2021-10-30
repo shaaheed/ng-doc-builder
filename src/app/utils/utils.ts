@@ -1,4 +1,7 @@
-function uuid() { // Public Domain/MIT
+// Copyright (c) Sahidul Islam. All Rights Reserved.
+// Author: https://github.com/shaaheed
+
+export const uuid = () => { // Public Domain/MIT
     var d = new Date().getTime();
     if (typeof performance !== 'undefined' && typeof performance.now === 'function') {
         d += performance.now(); //use high-precision timer if available
@@ -10,18 +13,18 @@ function uuid() { // Public Domain/MIT
     });
 }
 
-function on(el, en, f) {
-    el.addEventListener(en, f);
+export const on = (el: HTMLElement, type: any, listener: any) => {
+    el.addEventListener(type, listener);
 }
 
-function off(el, en, f) {
-    el.removeEventListener(en, f, false);
+export const off = (el: HTMLElement, type: any, listener: any) => {
+    el.removeEventListener(type, listener, false);
 }
 
-function hasClass(el, klass) {
+export const hasClass = (el: HTMLElement, _class: string) => {
     let hasClass = false;
-    el.classList.forEach(_klass => {
-        if (_klass === klass) {
+    el.classList.forEach(cls => {
+        if (cls === _class) {
             hasClass = true;
             return;
         }
@@ -29,19 +32,23 @@ function hasClass(el, klass) {
     return hasClass;
 }
 
-function addClass(el, klass) {
-    if (!hasClass(el, klass)) {
-        el.classList.add(klass);
+export const addClass = (el: HTMLElement, _class: string) => {
+    if (!hasClass(el, _class)) {
+        el.classList.add(_class);
     }
 }
 
-function removeClass(el, klass) {
-    if (hasClass(el, klass)) {
-        el.classList.remove(klass);
+export const removeClass = (el: HTMLElement, _class: string) => {
+    if (hasClass(el, _class)) {
+        el.classList.remove(_class);
     }
 }
 
-function getFileAsDataURL(e, callback, load = null) {
+export const getFileAsDataURL = (
+    e: any,
+    callback?: (agr: any) => void,
+    load?: (arg: boolean) => void
+) => {
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.addEventListener("loadstart", (e) => {
@@ -57,4 +64,3 @@ function getFileAsDataURL(e, callback, load = null) {
         reader.readAsDataURL(file);
     }
 }
-

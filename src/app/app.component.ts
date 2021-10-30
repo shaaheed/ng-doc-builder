@@ -1,5 +1,7 @@
+// Copyright (c) Sahidul Islam. All Rights Reserved.
+// Author: https://github.com/shaaheed
+
 import { Component } from '@angular/core';
-import { BaseComponent } from './base.component';
 import { CommonService } from './services/common.service';
 import { BaseCommonComponent } from './base-common.component';
 
@@ -10,7 +12,7 @@ import { BaseCommonComponent } from './base-common.component';
 export class AppComponent extends BaseCommonComponent {
 
   selectedComponent: any;
-  seletectedTab: string;
+  selectedTab: string = '';
 
   constructor(
     public common: CommonService) {
@@ -20,12 +22,12 @@ export class AppComponent extends BaseCommonComponent {
   ngOnInit() {
     this.subscribe(this.common.openSettings, this.openSettings.bind(this));
     this.subscribe(this.common.closeSettings, () => { this.selectedComponent = null })
-    this.seletectedTab = 'document';
+    this.selectedTab = 'document';
   }
 
-  dragStartEvent(e: DragEvent, block) {
-    e.dataTransfer.setData('component', block);
-    e.dataTransfer.setData('from', 'block');
+  dragStartEvent(e: DragEvent, block: any) {
+    e.dataTransfer?.setData('component', block);
+    e.dataTransfer?.setData('from', 'block');
   }
 
   openSettings() {
@@ -38,8 +40,8 @@ export class AppComponent extends BaseCommonComponent {
     }
   }
 
-  changeTab(tab) {
-    this.seletectedTab = tab;
+  changeTab(tab: any) {
+    this.selectedTab = tab;
     if (tab === 'document') {
       this.selectedComponent = null;
     }

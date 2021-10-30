@@ -3,21 +3,26 @@
 
 import { Component, OnInit } from '@angular/core';
 import { BaseConfigComponent } from 'src/app/base-config.component';
+import { constant } from 'src/app/common/constant';
 import { CommonService } from 'src/app/services/common.service';
-import { AreaComponent } from '../area/area.component';
+import { TableComponent } from '../table/table.component';
 
 @Component({
-  selector: 'app-area-config',
+  selector: 'app-table-config',
   templateUrl: './config.component.html',
 })
-export class AreaConfigComponent extends BaseConfigComponent implements OnInit {
+export class TableConfigComponent extends BaseConfigComponent implements OnInit {
 
-  constructor(public common: CommonService) {
+  styleOptions: any[] = constant.borderOptions;
+
+  constructor(
+    public common: CommonService
+  ) {
     super(common);
   }
 
   ngOnInit() {
-    this.initModel<AreaComponent>();
+    this.initModel<TableComponent>();
   }
 
   ngOnDestroy() {

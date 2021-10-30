@@ -2,7 +2,6 @@
 // Author: https://github.com/shaaheed
 
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { isString } from '../../utils/utils';
 
 @Component({
   selector: 'app-select',
@@ -11,7 +10,7 @@ import { isString } from '../../utils/utils';
 export class SelectComponent {
 
   @Input() set value(v: any) {
-    if (this.mode == 'multiple' && isString(v)) {
+    if (this.mode == 'multiple' && typeof(v) == 'string') {
       this._value = [v];
     }
     else {

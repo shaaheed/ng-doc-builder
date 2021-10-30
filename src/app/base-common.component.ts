@@ -1,5 +1,7 @@
-import { Subscription } from "rxjs/Subscription";
-import { Subject } from "rxjs/Subject";
+// Copyright (c) Sahidul Islam. All Rights Reserved.
+// Author: https://github.com/shaaheed
+
+import { Subject, Subscription } from "rxjs";
 import { CommonService } from "./services/common.service";
 
 export class BaseCommonComponent {
@@ -16,11 +18,17 @@ export class BaseCommonComponent {
         error?: (error: any) => void,
         complete?: () => void): void {
         const subscription = subject.subscribe(n => {
-            next(n);
+            if (next) {
+                next(n);
+            }
         }, e => {
-            error(e);
+            if (error) {
+                error(e);
+            }
         }, () => {
-            complete();
+            if (complete) {
+                complete();
+            }
         });
         this.subscriptions.push(subscription);
     }

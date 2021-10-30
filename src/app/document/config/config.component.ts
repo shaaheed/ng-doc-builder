@@ -1,12 +1,14 @@
+// Copyright (c) Sahidul Islam. All Rights Reserved.
+// Author: https://github.com/shaaheed
+
 import { Component, OnInit } from '@angular/core';
-import { CommonService } from '../services/common.service';
+import { CommonService } from '../../services/common.service';
 import { DocumentComponent } from '../document/document.component';
-import { BaseComponent } from '../base.component';
-import { BaseConfigComponent } from '../base-config.component';
+import { BaseConfigComponent } from '../../base-config.component';
 
 @Component({
   selector: 'app-document-config',
-  templateUrl: './document-config.component.html',
+  templateUrl: './config.component.html',
 })
 export class DocumentConfigComponent extends BaseConfigComponent implements OnInit {
 

@@ -1,3 +1,6 @@
+// Copyright (c) Sahidul Islam. All Rights Reserved.
+// Author: https://github.com/shaaheed
+
 export const constant = {
     image: { name: 'image', title: 'Image' },
     text: { name: 'text', title: 'Text' },

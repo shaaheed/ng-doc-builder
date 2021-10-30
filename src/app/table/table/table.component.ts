@@ -1,8 +1,11 @@
+// Copyright (c) Sahidul Islam. All Rights Reserved.
+// Author: https://github.com/shaaheed
+
 import { Component, OnInit, ElementRef } from '@angular/core';
-import * as interact from 'interactjs'
-import { BaseComponent } from '../base.component';
-import { constant } from '../common/constant';
-import { CommonService } from '../services/common.service';
+// import interact from 'interactjs/index';
+import { BaseComponent } from 'src/app/base.component';
+import { constant } from 'src/app/common/constant';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-table',
@@ -10,7 +13,7 @@ import { CommonService } from '../services/common.service';
 })
 export class TableComponent extends BaseComponent implements OnInit {
 
-  borderString: string;
+  borderString: string = '';
   style: string = 'solid';
   color: string = '#000000';
   thData: any[] = [];
@@ -37,7 +40,8 @@ export class TableComponent extends BaseComponent implements OnInit {
 
   constructor(
     public elRef: ElementRef,
-    public common: CommonService) {
+    public common: CommonService
+  ) {
 
     super(common, elRef);
     this.width = 400;
@@ -51,17 +55,17 @@ export class TableComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit() {
-    const moverArea = this.el.querySelector('.mover-area');
-    interact(moverArea).draggable({
-      onstart: (e) => {
-        this.wasDrag = true;
-      },
-      onmove: (e) => {
-        this.wasDrag = true;
-        this.top = this.top + e.dy;
-        this.left = this.left + e.dx;
-      }
-    })
+    const moverArea = this.el.querySelector('.mover-area') as HTMLElement;
+    // interact(moverArea).draggable({
+    //   onstart: (e: any) => {
+    //     this.wasDrag = true;
+    //   },
+    //   onmove: (e: any) => {
+    //     this.wasDrag = true;
+    //     this.top = this.top + e.dy;
+    //     this.left = this.left + e.dx;
+    //   }
+    // })
     // .resizable({
     //   edges: { left: true, right: true, bottom: false, top: false },
     // }).on('resizemove', (e) => {

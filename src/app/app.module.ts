@@ -5,24 +5,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { DocumentComponent } from './document/document.component';
-import { HeaderComponent } from './header/header.component';
-import { ImageComponent } from './image/image/image.component';
-import { ImageConfigComponent } from './image-config/image-config.component';
 import { ImageService } from './services/image.service';
-import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { TextComponent } from './text/text.component';
 import { CommonService } from './services/common.service';
-import { BorderPickerComponent } from './shared/border-picker/border-picker.component';
-import { TextConfigComponent } from './text-config/text-config.component';
-import { ColorPickerComponent } from './shared/color-picker/color-picker.component';
-import { LineComponent } from './line/line.component';
-import { LineConfigComponent } from './line-config/line-config.component';
-import { TableComponent } from './table/table.component';
-import { TableConfigComponent } from './table-config/table-config.component';
-import { DocumentConfigComponent } from './document-config/document-config.component';
-import { AreaComponent } from './area/area/area.component';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
@@ -35,39 +21,53 @@ import { OptionPickerModule } from './shared/option-picker/option-picker.module'
 import { TextControlsModule } from './shared/text-controls/text-controls.module';
 import { ControlsModule } from './shared/controls/controls.module';
 import { AreaConfigModule } from './area/config/config.module';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { AreaModule } from './area/area/area.module';
+import { TableModule } from './table/table/table.module';
+import { TableConfigModule } from './table/config/config.module';
+import { ColorPickerModule } from './shared/color-picker/color-picker.module';
+import { TextModule } from './text/text/text.module';
+import { TextConfigModule } from './text/config/config.module';
+import { BorderPickerModule } from './shared/border-picker/border-picker.module';
+import { ImageModule } from './image/image/image.module';
+import { ImageConfigModule } from './image/config/config.module';
+import { HeaderModule } from './header/header.module';
+import { DocumentModule } from './document/document/document.module';
+import { DocumentConfigModule } from './document/config/config.module';
+import { LineConfigModule } from './line/config/config.module';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
     AppComponent,
-    DocumentComponent,
-    DocumentConfigComponent,
-    HeaderComponent,
-    ImageComponent,
-    ImageConfigComponent,
-    TextComponent,
-    BorderPickerComponent,
-    TextConfigComponent,
-    ColorPickerComponent,
-    LineComponent,
-    LineConfigComponent,
-    TableComponent,
-    TableConfigComponent,
-    AreaComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    HeaderModule,
+    DocumentModule,
+    DocumentConfigModule,
     InputPickerModule,
     FilePickerModule,
     TogglePickerModule,
     OptionPickerModule,
+    ColorPickerModule,
+    BorderPickerModule,
     TextControlsModule,
     ControlsModule,
+    TextModule,
+    TextConfigModule,
+    ImageModule,
+    ImageConfigModule,
+    AreaModule,
     AreaConfigModule,
+
+    TableConfigModule,
+    LineConfigModule,
+    NzIconModule
   ],
   providers: [
     CommonService,

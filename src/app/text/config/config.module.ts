@@ -4,24 +4,26 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BorderPickerModule } from 'src/app/shared/border-picker/border-picker.module';
 import { ColorPickerModule } from 'src/app/shared/color-picker/color-picker.module';
 import { InputPickerModule } from 'src/app/shared/input-picker/input-picker.module';
-import { AreaConfigComponent } from './config.component';
+import { OptionPickerModule } from 'src/app/shared/option-picker/option-picker.module';
+import { TextControlsModule } from 'src/app/shared/text-controls/text-controls.module';
+import { TextConfigComponent } from './config.component';
 
 @NgModule({
   declarations: [
-    AreaConfigComponent
+    TextConfigComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     InputPickerModule,
+    OptionPickerModule,
     ColorPickerModule,
-    BorderPickerModule
+    TextControlsModule
   ],
   exports: [
-    AreaConfigComponent
+    TextConfigComponent
   ]
 })
-export class AreaConfigModule { }
+export class TextConfigModule { }

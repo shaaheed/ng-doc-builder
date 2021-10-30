@@ -1,0 +1,23 @@
+// Copyright (c) Sahidul Islam. All Rights Reserved.
+// Author: https://github.com/shaaheed
+
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { ControlsModule } from '../../shared/controls/controls.module';
+import { LineComponent } from './line.component';
+
+@NgModule({
+  declarations: [
+    LineComponent
+  ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ControlsModule
+  ],
+  exports: [
+    LineComponent
+  ]
+})
+export class LineModule { }

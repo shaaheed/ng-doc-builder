@@ -5,7 +5,7 @@ import { ImageComponent } from '../image/image.component';
 
 @Component({
   selector: 'app-image-config',
-  templateUrl: './image-config.component.html',
+  templateUrl: './config.component.html',
 })
 export class ImageConfigComponent extends BaseConfigComponent implements OnInit {
 

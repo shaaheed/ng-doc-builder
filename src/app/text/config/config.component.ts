@@ -1,11 +1,14 @@
+// Copyright (c) Sahidul Islam. All Rights Reserved.
+// Author: https://github.com/shaaheed
+
 import { Component, OnInit } from '@angular/core';
-import { CommonService } from '../services/common.service';
+import { CommonService } from '../../services/common.service';
+import { BaseConfigComponent } from '../../base-config.component';
 import { TextComponent } from '../text/text.component';
-import { BaseConfigComponent } from '../base-config.component';
 
 @Component({
   selector: 'app-text-config',
-  templateUrl: './text-config.component.html',
+  templateUrl: './config.component.html',
 })
 export class TextConfigComponent extends BaseConfigComponent implements OnInit {
 
