@@ -15,11 +15,10 @@ export class InputPickerComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   inputChange(e: any) {
-    this.modelChange.emit(parseInt(e.target.value));
+    this.modelChange.emit(parseInt(e));
   }
 
 }

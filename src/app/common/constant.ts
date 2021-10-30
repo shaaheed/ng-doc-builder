@@ -8,9 +8,9 @@ export const constant = {
     table: { name: 'table', title: 'Table' },
     area: { name: 'area', title: 'Area' },
     borderOptions: [
-        { name: 'Solid', value: 'solid' },
-        { name: 'Dashed', value: 'dashed' },
-        { name: 'Dotted', value: 'dotted' }
+        { label: 'Solid', value: 'solid' },
+        { label: 'Dashed', value: 'dashed' },
+        { label: 'Dotted', value: 'dotted' }
     ],
     component: 'component',
     document: 'document'

@@ -5,7 +5,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { constant } from '../../common/constant';
 import { BaseComponent } from '../../base.component';
 import { CommonService } from '../../services/common.service';
-// import interact from 'interactjs/index';
+import interact from '@interactjs/interactjs';
 
 @Component({
   selector: 'app-text',
@@ -38,32 +38,32 @@ export class TextComponent extends BaseComponent implements OnInit {
     super(common, elRef);
     this.setNameTitle(constant.text.name);
     this.width = 150;
-    this.height = 22;
+    this.height = 31;
 
   }
 
   ngOnInit() {
 
     const moverArea = this.el.querySelector('.mover-area') as HTMLElement;
-    // interact(moverArea).draggable({
-    //   onstart: (e: any) => {
-    //     this.wasDrag = true;
-    //   },
-    //   onmove: (e: any) => {
-    //     this.wasDrag = true;
-    //     this.top = this.top + e.dy;
-    //     this.left = this.left + e.dx;
-    //   }
-    // });
+    interact(moverArea).draggable({
+      onstart: (e: any) => {
+        this.wasDrag = true;
+      },
+      onmove: (e: any) => {
+        this.wasDrag = true;
+        this.top = this.top + e.dy;
+        this.left = this.left + e.dx;
+      }
+    });
 
-    // interact(this.el.firstChild as HTMLElement).resizable({
-    //   edges: { left: true, right: true, bottom: true, top: true },
-    // }).on('resizemove', (e: any) => {
-    //   this.width = e.rect.width;
-    //   this.height = e.rect.height;
-    //   this.top = this.top + e.deltaRect.top;
-    //   this.left = this.left + e.deltaRect.left;
-    // });
+    interact(this.el.firstChild as HTMLElement).resizable({
+      edges: { left: true, right: true, bottom: true, top: true },
+    }).on('resizemove', (e: any) => {
+      this.width = e.rect.width;
+      this.height = e.rect.height;
+      this.top = this.top + e.deltaRect.top;
+      this.left = this.left + e.deltaRect.left;
+    });
   }
 
   ngOnDestroy() {

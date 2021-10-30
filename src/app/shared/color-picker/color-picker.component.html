@@ -8,5 +8,5 @@
     <div class="control color-picker">
     <span class="color-name">{{model}}</span>
     <span (click)="colorInput.click()" class="color cursor-pointer" [style.background]="model"></span>
-    <input [value]="model" (input)="colorInputChangeEvent($event)" #colorInput hidden type="color" />
+    <input [value]="model" (input)="colorInputChangeEvent($event)" #colorInput type="color" />
   </div>

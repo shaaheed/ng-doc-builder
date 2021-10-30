@@ -3,7 +3,7 @@
     Author: https://github.com/shaaheed
 -->
 
-<div cdkDragBoundary=".document-body" cdkDrag class="image component" (click)="openSettings($event)" [ngStyle]="{top: top + 'px', left: left + 'px', width: width + 'px', height: height + 'px', borderWidth: border ? borderWidth + 'px' : '', borderStyle:  border ? borderStyle : '', borderColor: border ? borderColor : '', position: 'absolute'}">
+<div class="image component" (click)="openSettings($event)" [ngStyle]="{top: top + 'px', left: left + 'px', width: width + 'px', height: height + 'px', borderWidth: border ? borderWidth + 'px' : '', borderStyle:  border ? borderStyle : '', borderColor: border ? borderColor : '', position: 'absolute'}">
     <div *ngIf="loader" class="img-loader-container">
         <div class="img-loader"></div>
     </div>

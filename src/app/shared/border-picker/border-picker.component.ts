@@ -29,24 +29,24 @@ export class BorderPickerComponent implements OnInit {
   }
 
   toggleChange(e: any) {
-    this.border = e.checked;
-    this.borderChange.emit(e.checked);
+    this.border = e;
+    this.borderChange.emit(e);
   }
 
   borderWidthChangeEvent(e: any) {
-    const value = parseInt(e.target.value);
+    const value = parseInt(e);
     this.borderWidth = value
     this.borderWidthChange.emit(value);
   }
 
   borderStyleChangeEvent(e: any) {
-    this.borderStyle = e.value;
-    this.borderStyleChange.emit(e.value);
+    this.borderStyle = e;
+    this.borderStyleChange.emit(e);
   }
 
   colorInputChangeEvent(e: any) {
-    this.borderColor = e.target.value;
-    this.borderColorChange.emit(e.target.value)
+    this.borderColor = e;
+    this.borderColorChange.emit(e)
   }
 
   makeColorEditable(isEditable: boolean) {

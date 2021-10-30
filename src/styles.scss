@@ -232,6 +232,16 @@ h5 {
     flex-direction: row-reverse;
 }
 
+.picker {
+    input[type="color"] {
+        height: 0;
+        width: 0;
+        border: 0;
+        padding: 0;
+        z-index: -1;
+    }
+}
+
 .picker .input-picker input {
     width: 55px;
     height: 23px;
@@ -488,6 +498,8 @@ app-table .table td {
     transform: translateY(-50%);
     i {
         cursor: pointer;
+        font-size: 12px;
+        margin: 0 2px;
     }
 }
 
@@ -510,9 +522,9 @@ app-table .table td {
     background-color: #3c91e6;
 }
 
-.component {
-    box-shadow: 0 0 0 1px rgba(60, 145, 230, 0.3);
-}
+// .component {
+//     box-shadow: 0 0 0 1px rgba(60, 145, 230, 0.3);
+// }
 
 .component:hover {
     box-shadow: 0 0 0 1px rgba(60, 145, 230, 0.8);

@@ -2,7 +2,7 @@
 // Author: https://github.com/shaaheed
 
 import { Component, OnInit, ElementRef } from '@angular/core';
-// import interact from 'interactjs/index';
+import interact from '@interactjs/interactjs';
 import { BaseComponent } from 'src/app/base.component';
 import { constant } from 'src/app/common/constant';
 import { CommonService } from 'src/app/services/common.service';
@@ -40,23 +40,23 @@ export class LineComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit() {
-    // interact(this.el.firstChild as HTMLElement).draggable({
-    //   onstart: (e: any) => {
-    //     this.wasDrag = true;
-    //   },
-    //   onmove: (e: any) => {
-    //     this.wasDrag = true;
-    //     this.top = this.top + e.dy;
-    //     this.left = this.left + e.dx;
-    //   }
-    // }).resizable({
-    //   edges: { left: true, right: true, bottom: false, top: false },
-    // }).on('resizemove', (e: any) => {
-    //   const newWidth = e.rect.width;
-    //   this.width = newWidth;
-    //   this.top = this.top + e.deltaRect.top;
-    //   this.left = this.left + e.deltaRect.left;
-    // });
+    interact(this.el.firstChild as HTMLElement).draggable({
+      onstart: (e: any) => {
+        this.wasDrag = true;
+      },
+      onmove: (e: any) => {
+        this.wasDrag = true;
+        this.top = this.top + e.dy;
+        this.left = this.left + e.dx;
+      }
+    }).resizable({
+      edges: { left: true, right: true, bottom: false, top: false },
+    }).on('resizemove', (e: any) => {
+      const newWidth = e.rect.width;
+      this.width = newWidth;
+      this.top = this.top + e.deltaRect.top;
+      this.left = this.left + e.deltaRect.left;
+    });
   }
 
   makeBorderStringFrom(value: any): string {

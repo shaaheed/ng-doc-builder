@@ -12,7 +12,7 @@
 <div class="picker padding-top-0" *ngIf="border">
     <div class="control border-picker">
         <div class="border-picker-item border-width-picker">
-            <input [value]="borderWidth" (input)="borderWidthChangeEvent($event)" type="text">
+            <app-input [value]="borderWidth" (onChange)="borderWidthChangeEvent($event)"></app-input>
             <span>px</span>
         </div>
         <div class="border-picker-item border-style-picker">
@@ -25,7 +25,7 @@
             <input *ngIf="isColorEditable" (focusout)="makeColorEditable(false)" class="color-name"
                 [value]="borderColor">
             <span (click)="colorInput.click()" class="color cursor-pointer" [style.background]="borderColor"></span>
-            <input [value]="borderColor" (input)="colorInputChangeEvent($event)" #colorInput hidden type="color" />
+            <input [value]="borderColor" (input)="colorInputChangeEvent($event)" #colorInput type="color" />
         </div>
     </div>
 </div>
