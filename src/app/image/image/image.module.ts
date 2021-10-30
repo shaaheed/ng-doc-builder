@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ControlsModule } from '../../shared/controls/controls.module';
 import { ImageComponent } from './image.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ImageComponent } from './image.component';
   imports: [
     CommonModule,
     FormsModule,
-    ControlsModule
+    ControlsModule,
+    DragDropModule
   ],
   exports: [
     ImageComponent

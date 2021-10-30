@@ -19,7 +19,7 @@ export class ImageComponent extends BaseComponent implements OnInit {
   borderStyle: string = 'solid';
   borderColor: string = '#000000';
   filename: string = '';
-  aspectRatio: boolean = false;
+  aspectRatio: boolean = true;
   loader: boolean = false;
 
   private _src: string = '';
