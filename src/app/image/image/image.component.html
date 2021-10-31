@@ -7,6 +7,6 @@
     <div *ngIf="loader" class="img-loader-container">
         <div class="img-loader"></div>
     </div>
-    <img (load)="loadEvent($event)" [ngStyle]="{width: width + 'px', height: height + 'px'}" src="{{src}}">
+    <img (load)="loadEvent($event)" [ngStyle]="{width: imageWidth + 'px', height: imageHeight + 'px'}" src="{{src}}">
     <app-controls (delete)="delete()" (copy)="copy()"></app-controls>
 </div>

@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { InputPickerComponent } from './input-picker.component';
-import { InputModule } from 'src/app/controls/input/input.module';
+import { SuffixInputModule } from 'src/app/controls/suffix-input/suffix-input.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,7 @@ import { InputModule } from 'src/app/controls/input/input.module';
   imports: [
     CommonModule,
     FormsModule,
-    InputModule
+    SuffixInputModule
   ],
   exports: [
     InputPickerComponent

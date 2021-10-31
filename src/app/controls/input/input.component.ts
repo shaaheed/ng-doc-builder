@@ -10,9 +10,9 @@ import { Component, EventEmitter, Input, Output, TemplateRef } from '@angular/co
 export class InputComponent {
 
   @Input() value: any;
-  @Input() prefix: string = '';
+  @Input() prefix?: string | TemplateRef<any>;
   @Input() placeholder: string = '';
-  @Input() suffix: string | TemplateRef<any> = '';
+  @Input() suffix?: string | TemplateRef<any>;
   @Input() canSuffixShow: boolean = true;
   @Input() inputStyle = {};
   @Input() disabled = false;

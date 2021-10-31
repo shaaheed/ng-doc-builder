@@ -3,7 +3,7 @@
 
 import { CommonService } from "./services/common.service";
 import { BaseCommonComponent } from "./base-common.component";
-import { ElementRef } from "@angular/core";
+import { ElementRef, EventEmitter } from "@angular/core";
 import { constant } from "./common/constant";
 import { uuid } from "./utils/utils";
 
@@ -12,12 +12,37 @@ export class BaseComponent extends BaseCommonComponent {
     wasDrag = false;
     id: string;
     el: HTMLElement;
-    top: number = 0;
-    left: number = 0;
-    width: number = 0;
-    height: number = 0;
     name: string = '';
     title: string = '';
+
+    top: number = 0;
+    topUnit: string = 'px';
+
+    left: number = 0;
+    leftUnit: string = 'px';
+
+    set width(value: number) {
+        this._width = value;
+        this.emitDimension('width', value);
+    }
+    get width() {
+        return this._width;
+    }
+    widthUnit: string = 'px';
+
+    set height(value: number) {
+        this._height = value;
+        this.emitDimension('height', value);
+    }
+    get height() {
+        return this._height;
+    }
+    heightUnit: string = 'px';
+
+    dimensionChange: EventEmitter<any> = new EventEmitter();
+
+    private _width: number = 0;
+    private _height: number = 0;
 
     constructor(
         public common: CommonService,
@@ -49,5 +74,9 @@ export class BaseComponent extends BaseCommonComponent {
 
     copy() {
         this.common.copyComponent.next(this);
+    }
+
+    private emitDimension(type: string, value: number) {
+        this.dimensionChange.emit({ type: type, value: value });
     }
 }

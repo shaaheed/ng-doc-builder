@@ -4,26 +4,22 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { SuffixInputComponent } from './suffix-input.component';
 import { InputModule } from 'src/app/controls/input/input.module';
 import { SelectModule } from 'src/app/controls/select/select.module';
-import { SuffixInputModule } from 'src/app/controls/suffix-input/suffix-input.module';
-import { SwitchModule } from 'src/app/controls/switch/switch.module';
-import { BorderPickerComponent } from './border-picker.component';
 
 @NgModule({
   declarations: [
-    BorderPickerComponent
+    SuffixInputComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    SelectModule,
-    SwitchModule,
     InputModule,
-    SuffixInputModule
+    SelectModule
   ],
   exports: [
-    BorderPickerComponent
+    SuffixInputComponent
   ]
 })
-export class BorderPickerModule { }
+export class SuffixInputModule { }

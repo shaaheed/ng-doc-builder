@@ -9,14 +9,13 @@
         <app-switch [value]="border" (onChange)="toggleChange($event)"></app-switch>
     </div>
 </div>
-<div class="picker padding-top-0" *ngIf="border">
+<div class="picker" *ngIf="border">
     <div class="control border-picker">
         <div class="border-picker-item border-width-picker">
-            <app-input [value]="borderWidth" (onChange)="borderWidthChangeEvent($event)"></app-input>
-            <span>px</span>
+            <app-suffix-input [value]="borderWidth" (onChange)="borderWidthChangeEvent($event)"></app-suffix-input>
         </div>
         <div class="border-picker-item border-style-picker">
-            <app-select placeholder="Style" [value]="borderStyle" (onChange)="borderStyleChangeEvent($event)"
+            <app-select [allowClear]="false" [showSearch]="false" placeholder="Style" [value]="borderStyle" (onChange)="borderStyleChangeEvent($event)"
                 [options]="options">
             </app-select>
         </div>

@@ -28,6 +28,8 @@ export class SelectComponent {
   @Output() onChange: EventEmitter<any> = new EventEmitter<any>();
   @Input() options: any[] = [];
   @Input() mode: any = 'default';
+  @Input() showSearch: boolean = true;
+  @Input() allowClear: boolean = true;
 
   private _value: any;
 

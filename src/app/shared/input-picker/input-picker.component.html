@@ -6,7 +6,6 @@
 <div class="picker">
   <h5>{{title}}</h5>
   <div class="control input-picker">
-    <app-input [value]="model" (onChange)="inputChange($event)" type="text"></app-input>
-    <span>px</span>
+    <app-suffix-input [suffixOptions]="suffixOptions" [suffixOption]="suffixOption" [value]="model" (onChange)="inputChange($event)"></app-suffix-input>
   </div>
 </div>

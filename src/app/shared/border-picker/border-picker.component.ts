@@ -45,8 +45,8 @@ export class BorderPickerComponent implements OnInit {
   }
 
   colorInputChangeEvent(e: any) {
-    this.borderColor = e;
-    this.borderColorChange.emit(e)
+    this.borderColor = e.target.value;
+    this.borderColorChange.emit(this.borderColor)
   }
 
   makeColorEditable(isEditable: boolean) {

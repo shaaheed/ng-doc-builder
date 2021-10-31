@@ -14,17 +14,37 @@ import interact from '@interactjs/interactjs';
 })
 export class ImageComponent extends BaseComponent implements OnInit {
 
-  border: boolean = false;
-  borderWidth: number = 1;
+  set border(value: boolean) {
+    this._border = value;
+    this.calculateImageDimension();
+  }
+
+  get border() {
+    return this._border;
+  }
+
+  set borderWidth(value: number) {
+    this._borderWidth = value;
+    this.calculateImageDimension();
+  }
+  get borderWidth() {
+    return this._borderWidth;
+  }
+
   borderStyle: string = 'solid';
   borderColor: string = '#000000';
   filename: string = '';
   aspectRatio: boolean = true;
   loader: boolean = false;
 
+  imageWidth: number = 0;
+  imageHeight: number = 0;
+
   private _src: string = '';
   private widthRate: number = 0;
   private heightRate: number = 0;
+  private _borderWidth: number = 1;
+  private _border: boolean = false;
 
   private imgEl: any;
   private base64ImagePrefix = 'data:image/png;base64,';
@@ -42,14 +62,16 @@ export class ImageComponent extends BaseComponent implements OnInit {
   constructor(
     public elRef: ElementRef,
     public common: CommonService) {
-
     super(common, elRef);
-    this.width = 100;
-    this.height = 100;
     this.setNameTitle(constant.image.name);
   }
 
   ngOnInit() {
+    this.subscribe(this.dimensionChange, dimension => this.calculateImageDimension());
+
+    this.width = 100;
+    this.height = 100;
+
     this.imgEl = this.elRef.nativeElement.querySelector('img');
     interact(this.el.firstChild as HTMLElement).draggable({
       onstart: (e: any) => {
@@ -93,12 +115,22 @@ export class ImageComponent extends BaseComponent implements OnInit {
   }
 
   showLoader(value: any) {
-    console.log('value', value);
     this.loader = value;
   }
 
   ngOnDestroy() {
     this.unsubscribe();
+  }
+
+  calculateImageDimension() {
+    if (this.border) {
+      this.imageWidth = this.width - (this.borderWidth * 2);
+      this.imageHeight = this.height - (this.borderWidth * 2);
+    }
+    else {
+      this.imageWidth = this.width;
+      this.imageHeight = this.height;
+    }
   }
 
 }

@@ -3,11 +3,15 @@
     Author: https://github.com/shaaheed
 */
 
+$blue-color: #3c91e6;
+$config-font-color: #97a0a9;
+$input-picker-font-size: 12px;
+
 body,
 html {
     margin: 0;
     padding: 0;
-    background: #e5e5e5;
+    background: #dae0e6;
     overflow: hidden;
     height: 100%;
     font-family: sans-serif;
@@ -31,8 +35,8 @@ h5 {
 }
 
 .doc-left {
-    width: 380px;
-    background: white;
+    width: 330px;
+    background: #fff;
     position: absolute;
     height: 100%;
     top: 58px;
@@ -54,16 +58,16 @@ h5 {
 }
 
 .doc-left .top-header .title.selected {
-    box-shadow: 0 3px 0 0 #3c91e6;
+    box-shadow: 0 3px 0 0 $blue-color;
 }
 
 .doc-left .top-header .title.selected h4 {
     font-size: 14px;
-    color: #3c91e6;
+    color: $blue-color;
 }
 
 .doc-left .bottom {
-    padding: 0 0 30px 30px;
+    padding: 0 0 20px 20px;
 }
 
 .doc-pane {
@@ -100,7 +104,7 @@ h5 {
 .config {
     overflow-y: auto;
     height: calc(100vh - 192px);
-    padding-right: 30px;
+    padding-right: 20px;
 }
 
 .config-header {
@@ -165,74 +169,62 @@ h5 {
     padding: 25px 30px 0 0;
     justify-content: space-between;
     display: flex;
-}
-
-.block-container .block {
-    color: #3c91e6;
-    cursor: move;
-    display: flex;
-    padding: 20px 0;
-    -webkit-box-flex: 1;
-    flex-basis: 45%;
-    box-shadow: 0 0 0 1px #aad7f9, 0 0 0 0 rgba(0, 0, 0, 0.05);
-    border-radius: 3px;
-    flex-direction: column;
-    align-items: center;
-}
-
-.block-container .block .mat-icon {
-    font-size: 45px;
-    text-align: center;
-    color: #3c91e6;
-    width: 45px;
-    height: 45px;
-}
-
-.block-container .block span {
-    text-transform: uppercase;
-    font-size: 11px;
-    display: block;
-    font-weight: bold;
-    padding-top: 15px;
-    color: #000;
-}
-
-.block-container .block:hover {
-    background: #3c91e6;
-}
-
-.block-container .block:hover .mat-icon {
-    color: #fff;
-}
-
-.block-container .block:hover span {
-    color: #fff;
+    .block {
+        color: $blue-color;
+        cursor: move;
+        display: flex;
+        padding: 20px 0;
+        -webkit-box-flex: 1;
+        flex-basis: 45%;
+        box-shadow: 0 0 0 1px #aad7f9, 0 0 0 0 rgba(0, 0, 0, 0.05);
+        border-radius: 3px;
+        flex-direction: column;
+        align-items: center;
+        &:hover {
+            background: $blue-color;
+            i,
+            span {
+                color: #fff;
+            }
+        }
+        i {
+            font-size: 32px;
+            text-align: center;
+            color: $blue-color;
+        }
+        span {
+            text-transform: uppercase;
+            font-size: 11px;
+            display: block;
+            font-weight: bold;
+            padding-top: 15px;
+            color: #000;
+        }
+    }
 }
 
 .picker {
     display: flex;
-    padding: 20px 0;
-    box-shadow: inset 0 -1px 0 #e5e5e5;
-}
-
-.picker h5 {
-    line-height: 25px;
-    flex: 1;
-}
-
-.picker .control {
-    flex: 2;
-    text-align: right;
-    position: relative;
-}
-
-.picker .file-picker {
-    display: flex;
+    padding: 10px 0;
     align-items: center;
-    flex-direction: row-reverse;
-}
-
-.picker {
+    h5 {
+        flex: 1;
+        font-size: 13px;
+    }
+    .control {
+        text-align: right;
+        position: relative;
+    }
+    .file-picker {
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+    }
+    .border-picker {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
     input[type="color"] {
         height: 0;
         width: 0;
@@ -240,42 +232,46 @@ h5 {
         padding: 0;
         z-index: -1;
     }
-}
-
-.picker .input-picker input {
-    width: 55px;
-    height: 23px;
-    border-radius: 3px;
-    border: 1px solid #d3dbde;
-    padding: 0 25px 0 5px;
-    font-size: 12px;
-    font-weight: bold;
-    color: #97a0a9;
+    .input-picker {
+        input {
+            width: 55px;
+            height: 30px;
+            border-radius: 25px;
+            border: 1px solid #d3dbde;
+            padding: 0 10px;
+            font-size: $input-picker-font-size;
+            color: $config-font-color;
+        }
+        .ant-select-arrow {
+            right: 13px;
+            font-size: calc(#{$input-picker-font-size} - 2px);
+        }
+        .ant-select-dropdown {
+            border-radius: 10px !important;
+        }
+        .ant-select {
+            color: $config-font-color;
+            font-size: $input-picker-font-size;
+        }
+        .ant-select-selector {
+            border: none !important;
+            box-shadow: none !important;
+        }
+        .ant-input-group-addon {
+            border-radius: 0 25px 25px 0;
+        }
+    }
 }
 
 .picker .input-picker span,
 .border-width-picker span {
-    position: absolute;
-    font-size: 11px;
-    right: 0px;
-    line-height: 21px;
-    height: calc(100% - 2px);
     padding: 0px 5px;
-    margin: 1px 1px 1px 0;
-    border-radius: 0 2px 2px 0;
-}
-
-.picker .border-picker {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
 }
 
 .picker .border-style-picker,
 .picker .option-picker {
-    border: 1px solid #b7b7b7;
     display: flex;
-    height: 23px;
+    height: 30px;
     align-items: center;
     text-align: left;
     padding-left: 5px;
@@ -313,8 +309,8 @@ h5 {
 
 .picker .border-color-picker span.color,
 .picker .color-picker span.color {
-    flex-basis: 21px;
-    height: 21px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     border: 2px solid #b7b7b7;
 }
@@ -340,10 +336,9 @@ h5 {
 
 .border-width-picker input {
     width: calc(100% - 42px);
-    height: 23px;
+    height: 30px;
     border-radius: 3px;
     border: 1px solid #b7b7b7;
-    padding: 0 30px 0px 5px;
 }
 
 .picker .file-picker .file-name {
@@ -392,7 +387,7 @@ app-text .text {
 
 .text-controls .mat-icon:hover,
 .text-controls .mat-icon.active {
-    background: #3c91e6;
+    background: $blue-color;
     color: #fff;
 }
 
@@ -466,7 +461,7 @@ app-table .table td {
 }
 
 .color-blue {
-    color: #3c91e6;
+    color: $blue-color;
 }
 
 .flex {
@@ -511,7 +506,7 @@ app-table .table td {
 }
 
 .controls mat-icon:hover {
-    color: #3c91e6;
+    color: $blue-color;
 }
 
 .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
@@ -519,7 +514,7 @@ app-table .table td {
 }
 
 .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
-    background-color: #3c91e6;
+    background-color: $blue-color;
 }
 
 // .component {

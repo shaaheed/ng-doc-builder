@@ -12,6 +12,7 @@ export class SwitchComponent {
   @Input() value: any;
   @Input() inputStyle = {};
   @Input() disabled = false;
+  @Input() size: any = 'default';
   @Output() onChange: EventEmitter<any> = new EventEmitter<any>();
 
   ngOnInit() { }

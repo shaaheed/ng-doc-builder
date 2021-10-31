@@ -13,7 +13,7 @@
 </ng-container>
 
 <ng-template #inputTemplate>
-    <input [(ngModel)]="value" [disabled]="disabled" (ngModelChange)="onValueChange($event)" [ngStyle]="inputStyle" [type]="type" nz-input placeholder="{{placeholder}}" />
+    <input [(ngModel)]="value" [disabled]="disabled" (ngModelChange)="onValueChange($event)" [ngStyle]="inputStyle" [type]="type" nz-input [placeholder]="placeholder" />
 </ng-template>
 
 <ng-template #errorTemplate let-control>

@@ -1,0 +1,11 @@
+<!--
+    Copyright (c) Sahidul Islam. All Rights Reserved.
+    Author: https://github.com/shaaheed
+-->
+
+<app-input [suffix]="suffixTemplate" [value]="value" (onChange)="inputChange($event)"></app-input>
+<ng-template #suffixTemplate>
+  <span *ngIf="suffixOptions.length <= 0">{{suffixOption}}</span>
+  <app-select *ngIf="suffixOptions.length > 0" [value]="suffixOption" [options]="suffixOptions"
+    (onChange)="onSuffixChange($event)" [showSearch]="false" [allowClear]="false"></app-select>
+</ng-template>

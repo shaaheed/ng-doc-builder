@@ -9,6 +9,11 @@ import { ImageComponent } from '../image/image.component';
 })
 export class ImageConfigComponent extends BaseConfigComponent implements OnInit {
 
+  units: any[] = [
+    { label: 'px', value: 'px' },
+    { label: 'em', value: 'em' }
+  ];
+
   constructor(
     public common: CommonService) {
     super(common)
@@ -21,5 +26,6 @@ export class ImageConfigComponent extends BaseConfigComponent implements OnInit 
   ngOnDestroy() {
     this.unsubscribe();
   }
+
 
 }

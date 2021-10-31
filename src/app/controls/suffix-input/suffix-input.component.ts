@@ -4,16 +4,16 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-input-picker',
-  templateUrl: './input-picker.component.html'
+  selector: 'app-suffix-input',
+  templateUrl: './suffix-input.component.html'
 })
-export class InputPickerComponent implements OnInit {
+export class SuffixInputComponent implements OnInit {
 
   @Input() title: string = '';
-  @Input() model: any;
+  @Input() value: any;
   @Input() suffixOptions: any[] = [];
   @Input() suffixOption: string = 'px';
-  @Output() modelChange: EventEmitter<any> = new EventEmitter();
+  @Output() onChange: EventEmitter<any> = new EventEmitter();
   @Output() suffixChange: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
@@ -21,7 +21,7 @@ export class InputPickerComponent implements OnInit {
   ngOnInit() { }
 
   inputChange(e: any) {
-    this.modelChange.emit(parseInt(e));
+    this.onChange.emit(parseInt(e));
   }
 
   onSuffixChange(e: any) {
